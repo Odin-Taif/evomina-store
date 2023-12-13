@@ -8,9 +8,9 @@ type Props = {};
 const Filter = (props: Props) => {
   const [showFilter, setShowFilter] = useState<boolean>(false);
   const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
-  const [selectedSize, setSelectedSize] = useState<string[]>([]);
+
   const [allHexValues, setHexValues] = useState<string[]>([]);
-  const [selectedHexValues, setSelectedHexValues] = useState<string[]>([]);
+
   const [price, setPrice] = useState({
     min: 0,
     max: 10,
@@ -42,63 +42,32 @@ const Filter = (props: Props) => {
     );
   };
 
-  const togglesize = (size: string) => {
-    setSelectedSize((prevSize) =>
-      prevSize.includes(size)
-        ? prevSize.filter((c) => c !== size)
-        : [...prevSize, size]
-    );
-  };
-
-  const toggleColor = (color: string) => {
-    setSelectedHexValues((prevColor) =>
-      prevColor.includes(color)
-        ? prevColor.filter((c) => c !== color)
-        : [...prevColor, color]
-    );
-  };
-
-  const getAllColors = async () => {
-    try {
-      const response = await axios.get("/api/color");
-      // console.log("Colors:", response.data);
-      return response.data;
-    } catch (error) {
-      console.error("Error", error);
-      return null;
-    }
-  };
-
   useEffect(() => {
-    getAllColors().then((allColors) => {
-      if (allColors) {
-        const hextSet = new Set<string>();
-        allColors.forEach((element: any) => {
-          const colors = element.color.split(",");
-          colors.forEach((color: string) => {
-            const hextValue = color.replace("#", "");
-            hextSet.add(hextValue);
-          });
-        });
-        const uniqueHexValues: string[] = Array.from(hextSet);
-        setHexValues(uniqueHexValues);
-      }
-    });
+    // getAllColors().then((allColors) => {
+    //   if (allColors) {
+    //     const hextSet = new Set<string>();
+    //     allColors.forEach((element: any) => {
+    //       const colors = element.color.split(",");
+    //       colors.forEach((color: string) => {
+    //         const hextValue = color.replace("#", "");
+    //         hextSet.add(hextValue);
+    //       });
+    //     });
+    //     const uniqueHexValues: string[] = Array.from(hextSet);
+    //     setHexValues(uniqueHexValues);
+    //   }
+    // });
   }, []);
-
-  const allHexValue = allHexValues;
 
   useEffect(() => {
     axios
       .get("/api/filterproduct", {
         params: {
           categories: selectedCategories,
-          size: selectedSize,
           price: {
             min: price.min,
             max: price.max,
           },
-          colors: selectedHexValues,
         },
         headers: {
           "Content-Type": "application/json",

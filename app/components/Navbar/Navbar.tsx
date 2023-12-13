@@ -8,12 +8,14 @@ import SearchBar from "../SearchBar";
 import { signIn, signOut, useSession } from "next-auth/react";
 import Logo from "./Logo";
 import UserProfile from "./UserProfile";
+import useLoginModel from "@/app/hook/useLoginModal";
 
 type Props = {};
 
 const Navbar = (props: Props) => {
   const [showProfile, setShowProfile] = useState<boolean>(false);
   const [showNav, setShowNav] = useState<boolean>(false);
+  const loginModel = useLoginModel();
   const { data: session } = useSession();
 
   // console.log(session?.user)
@@ -50,7 +52,7 @@ const Navbar = (props: Props) => {
     );
   };
   return (
-    <div className="border-b border-amber-400">
+    <div className="border-b border-amber-400 mb-2">
       <div className="flex items-center justify-between py-2 px-4 relative">
         <div className="flex items-center md:space-x-10 lg:space-x-20">
           <Logo />
@@ -118,11 +120,11 @@ const Navbar = (props: Props) => {
               </div>
             </Link>
           ) : (
-            <Link href="/signin">
+            <div onClick={loginModel.onOpen}>
               <div className="p-2 bg-gray-100 rounded-full">
                 <CiShoppingCart size={20} />
               </div>
-            </Link>
+            </div>
           )}
           <span
             onClick={() => setShowNav(!showNav)}
@@ -143,18 +145,13 @@ const Navbar = (props: Props) => {
       >
         <ul className="flex flex-col text-[15px] opacity-75 px-2">
           <li>
-            <a href="/shop" className="py-3 inline-block w-full ">
+            <a href="/" className="py-3 inline-block w-full ">
               Shop
             </a>
           </li>
           <li>
             <a href="/filters" className="py-3 inline-block w-full ">
               Filters
-            </a>
-          </li>
-          <li>
-            <a href="/myproducts" className="py-3 inline-block w-full ">
-              My Product
             </a>
           </li>
         </ul>
