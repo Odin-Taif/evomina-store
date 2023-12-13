@@ -66,7 +66,7 @@ const UserProfile = () => {
   ];
   return (
     // The dropdown menu component from headless UI
-    <Menu as="div" className="relative z-0">
+    <Menu as="div" className="relative z-10">
       <Menu.Button className="flex items-center space-x-px group">
         <div className="shrink-0 flex items-center justify-center rounded-full overflow-hidden relative bg-gray-200 w-9 h-9">
           {/* Displaying user's profile picture if available, otherwise a default icon */}

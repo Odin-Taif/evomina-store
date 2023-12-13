@@ -2,10 +2,8 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { signIn, signOut, useSession } from "next-auth/react";
-import Navbar from "../components/Navbar/Navbar";
+
 import { useRouter } from "next/navigation";
-import Size from "../components/Size";
-import Color from "../components/Color";
 import Para from "../components/Para";
 import ImageUpload from "../components/ImageUpload";
 
@@ -17,16 +15,8 @@ const Productform = (props: Props) => {
   const router = useRouter();
   const [formData, setFormData] = useState({
     title: "",
-    description: `<div>
-        <p>
-        Enter your text here ....
-        </p>
-      </div>`,
+    description: "",
     category: "",
-    style: "",
-    size: "",
-    inventory: 0,
-    color: "#fe345e",
     price: 0,
     images: "",
     userId: id,
@@ -96,7 +86,9 @@ const Productform = (props: Props) => {
   };
   return (
     <div className="px-5 max-w-[1280px] mx-auto mb-10">
-      <h1 className="text-3xl font-semibold py-6">Add your Product n SEINE</h1>
+      <h1 className="text-3xl font-semibold py-6">
+        Add your Products in Evomina
+      </h1>
       <div className="text-black mt-4">
         <div className="grid md:grid-cols-2 grid-cols-1 gap-5">
           <div>
@@ -123,18 +115,7 @@ const Productform = (props: Props) => {
               onChange={handleChange}
             />
           </div>
-          <div>
-            <label htmlFor="style" className="font-medium">
-              Style
-            </label>
-            <input
-              type="text"
-              className="w-full h-[50px] border-[1px] rounded-lg focus:border-pink-500 px-3 focus:border-2 outline-none"
-              name="style"
-              value={formData.style}
-              onChange={handleChange}
-            />
-          </div>
+
           <div>
             <label htmlFor="store" className="font-medium">
               Store
@@ -147,31 +128,7 @@ const Productform = (props: Props) => {
               onChange={handleChange}
             />
           </div>
-          <div>
-            <label htmlFor="size" className="font-medium">
-              Size
-            </label>
-            <input
-              type="text"
-              className="w-full h-[50px] border-[1px] rounded-lg focus:border-pink-500 px-3 focus:border-2 outline-none"
-              name="size"
-              value={formData.size}
-              onChange={handleChange}
-            />
-            <Size setFormData={setFormData} />
-          </div>
-          <div>
-            <label htmlFor="inventory" className="font-medium">
-              Inventory
-            </label>
-            <input
-              type="number"
-              className="w-full h-[50px] border-[1px] rounded-lg focus:border-pink-500 px-3 focus:border-2 outline-none"
-              name="inventory"
-              value={formData.inventory}
-              onChange={handlePriceChange}
-            />
-          </div>
+
           <div>
             <label htmlFor="price" className="font-medium">
               Price
@@ -183,21 +140,6 @@ const Productform = (props: Props) => {
               value={formData.price}
               onChange={handlePriceChange}
             />
-          </div>
-          <div>
-            <div>
-              <label htmlFor="color" className="font-medium">
-                Color
-              </label>
-              <input
-                type="text"
-                className="w-full h-[50px] border-[1px] rounded-lg focus:border-pink-500 px-3 focus:border-2 outline-none"
-                name="color"
-                value={formData.color}
-                onChange={handleChange}
-              />
-            </div>
-            <Color setFormData={setFormData} Color={formData.color} />
           </div>
         </div>
         <label htmlFor="" className="mt-10 inline-block font-medium">

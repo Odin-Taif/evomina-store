@@ -1,6 +1,6 @@
 // Importing the necessary React components and custom components
 import AboutEvomina from "./AboutEvomina";
-
+import OurHistory from "./OurHistory";
 import OurValues from "./OurValues";
 
 // The Aboutus component, exported as the default component of this module
@@ -14,8 +14,7 @@ export default async function Aboutus() {
       <AboutEvomina />
       {/* The OurGoals component is rendered next. */}
       <OurValues />
-      {/* The OurHeros component is rendered last. */}
-      {/* <OurHeros /> */}
+      <OurHistory />
     </div>
   );
 }

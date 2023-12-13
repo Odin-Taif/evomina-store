@@ -50,7 +50,7 @@ const OurValues: FunctionComponent = () => {
               are part of our daily tasks.
             </p>
           </div>
-          <div className="rounded-md bg-gradient-to-t from-amber-200 to-gray-100 text-black p-8 text-center">
+          <div className="rounded-md bg-gradient-to-b from-amber-200 to-gray-100 text-black p-8 text-center">
             <div className="flex flex-col justify-center items-center">
               <h2 className="mt-6 font-normal my-3">Sustainability</h2>
               <GiUncertainty size={40} />
@@ -61,7 +61,7 @@ const OurValues: FunctionComponent = () => {
               environmental footprint.
             </p>
           </div>
-          <div className="rounded-md bg-gradient-to-t from-amber-200 to-gray-100 text-black p-8 text-center">
+          <div className="rounded-md bg-gradient-to-b from-amber-200 to-gray-100 text-black p-8 text-center">
             <div className="flex flex-col justify-center items-center">
               <h2 className="mt-6 font-normal my-3">Ethics & Transparency</h2>
               <MdClearAll size={40} />
@@ -72,7 +72,7 @@ const OurValues: FunctionComponent = () => {
               clients&apos; expectations.
             </p>
           </div>
-          <div className="rounded-md bg-gradient-to-t from-amber-200 to-gray-100 text-black p-8 text-center">
+          <div className="rounded-md bg-gradient-to-b from-amber-200 to-gray-100 text-black p-8 text-center">
             <div className="flex flex-col justify-center items-center">
               <h2 className="mt-6 font-normal my-3">Innovation</h2>
               <MdCreate size={40} />

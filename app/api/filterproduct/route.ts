@@ -1,6 +1,6 @@
 import prisma from "@/app/prismadb";
 import { NextResponse } from "next/server";
-export const dynamic = 'auto'
+export const dynamic = "auto";
 // 'auto' | 'force-dynamic' | 'error' | 'force-static'
 
 export async function GET(request: Request) {
@@ -17,9 +17,10 @@ export async function GET(request: Request) {
     const products = await prisma.product.findMany({
       where: {
         OR: [
-          ...categories.map((category) => ({ style: { contains: category } })),
-          ...sizes.map((size) => ({ size: { contains: size } })),
-          ...colors.map((color) => ({ color: { contains: color } })),
+          ...categories.map((category) => ({
+            category: { contains: category },
+          })),
+
           { price: { gte: minPrice, lte: maxPrice } },
         ],
       },

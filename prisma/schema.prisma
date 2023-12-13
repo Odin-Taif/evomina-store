@@ -27,11 +27,7 @@ model Product{
   title String @db.VarChar(255)
   description String @db.Text
   category String
-  style String
   store String
-  size String
-  inventory Int
-  color String
   price Int
   images String @db.Text
   userId Int

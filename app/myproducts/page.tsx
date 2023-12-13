@@ -40,7 +40,6 @@ const page = async (props: Props) => {
               <h1 className="mb-3">{product.title}</h1>
               <h1 className="mb-3"> Price: {product.price}</h1>
               <h1 className="mb-3"> Category: {product.category}</h1>
-              <h1 className="mb-3"> Style: {product.style}</h1>
               <h1 className="mb-3"> Store: {product.store}</h1>
               <DeleteProduct productId={product.id} userId={product.userId} />
             </div>
