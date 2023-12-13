@@ -1,13 +1,14 @@
 "use client";
 
 // Importing necessary hooks and components
-import useLoginModel from "@/hook/useLoginModal";
-import useRegisterModal from "@/hook/useRegisterModal";
+
 import { useCallback, useState } from "react";
 import Button from "../reusableComponents/Button";
 import { BiLogIn, BiUserPlus } from "react-icons/bi";
 import { useSession } from "next-auth/react";
 import UserProfile from "./UserProfile";
+import useRegisterModal from "@/app/hook/useRegisterModal";
+import useLoginModel from "@/app/hook/useLoginModal";
 
 // Defining the type for props, even though it's empty in this case
 type Props = {};

@@ -14,32 +14,26 @@ const socialmedia = [
   {
     name: "Instagram",
     icon: <FaInstagram />,
-    href: "https://www.instagram.com/friendsinflats/",
+    href: "https://www.instagram.com/evomina.scent",
+    target: "_blank",
+  },
+  {
+    name: "TikTok",
+    icon: <FaTiktok />,
+    href: "https://www.tiktok.com/@evomina.scent",
     target: "_blank",
   },
   {
     name: "Facebook",
     icon: <FaFacebookF />,
-    href: "https://www.facebook.com/profile.php?id=100091522494885",
-    target: "_blank",
-  },
-  {
-    name: "Linkedin",
-    icon: <FaLinkedin />,
-    href: "https://www.linkedin.com/in/friends-in-flats-367356272/",
+    href: "https://www.facebook.com/evomina.scent",
     target: "_blank",
   },
   {
     name: "mailto",
     icon: <FaMailBulk />,
-    href: "mailto:office@friends-in-flats.at",
+    href: "mailto:info@evomina.com",
     target: "_blank",
-  },
-  {
-    name: "mobile",
-    icon: <FaMobileAlt />,
-    href: "/contact",
-    target: "_self",
   },
 ];
 

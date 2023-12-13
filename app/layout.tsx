@@ -3,6 +3,10 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import Provider from "./components/Provider";
 import Navbar from "./components/Navbar/Navbar";
+import Footer from "./components/Footer/Footer";
+import LoginModal from "./components/modals/LoginModal";
+import RegisterModal from "./components/modals/RegisterModal";
+import ToastContainerBar from "./components/ToastContainerBar";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -20,8 +24,12 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <Provider>
+          <ToastContainerBar />
+          <LoginModal />
+          <RegisterModal />
           <Navbar />
           {children}
+          <Footer />
         </Provider>
       </body>
     </html>

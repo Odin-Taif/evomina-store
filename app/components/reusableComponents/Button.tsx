@@ -41,16 +41,21 @@ function Button({
       onClick={onClick}
       // Tailwind CSS classes for styling.
       className={`inline-flex items-center relative disabled:opacity-70 px-2 mx-1 disabled:cursor-not-allowed rounded hover:opacity-80 transition ${
-        outline ? "bg-white" : "bg-teal-500"
+        outline ? "bg-white" : "bg-amber-400"
       }
-      ${widthFull ? "w-full" : "w-auto"} ${outline ? "border-black" : "border-teal-500"}
+      ${widthFull ? "w-full" : "w-auto"} ${
+        outline ? "border-black" : "border-amber-400"
+      }
       ${outline ? "text-black" : "text-white"} ${small ? "text-sm" : "text-md"}
       ${small ? "py-1" : "py-2"} ${small ? "font-light" : "font-semibold"}
       ${small ? "border-[1px]" : "border-2"}`}
     >
       {Icon && (
         // Rendering the icon if it is provided, with optional color styling.
-        <Icon size={20} className={`left-4 top-3 mr-2 ${isColor && "text-blue-600"}`} />
+        <Icon
+          size={20}
+          className={`left-4 top-3 mr-2 ${isColor && "text-blue-600"}`}
+        />
       )}
       {/* Displaying the button's label. */}
       <span>{label}</span>
