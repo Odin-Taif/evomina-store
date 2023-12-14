@@ -5,8 +5,6 @@ import { useCallback, useState } from "react";
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
 import { FcGoogle } from "react-icons/fc";
 import { toast } from "react-toastify";
-
-import Button from "../reusableComponents/Button";
 import Heading from "../reusableComponents/Heading";
 import Input from "../inputs/Input";
 import Modal from "./Modal";
@@ -32,8 +30,7 @@ function RegisterModal({}: Props) {
     formState: { errors },
   } = useForm<FieldValues>({
     defaultValues: {
-      firstName: "",
-      lastName: "",
+      name: "",
       email: "",
       password: "",
     },
@@ -63,8 +60,8 @@ function RegisterModal({}: Props) {
       .post("/api/register", data)
       .then(() => {
         toast.success("Success!");
-        confirmEmail.onOpen();
         registerModel.onClose();
+        loginModel.onOpen();
       })
       .catch((err: any) => console.log(err))
       .finally(() => {
@@ -101,8 +98,8 @@ function RegisterModal({}: Props) {
         </small>
       )}
       <Input
-        id="firstName"
-        label="First Name"
+        id="name"
+        label="Full Name"
         disabled={isLoading}
         register={register}
         errors={errors}
@@ -114,20 +111,7 @@ function RegisterModal({}: Props) {
           {errors.firstName.message.toString()}
         </small>
       )}
-      <Input
-        id="lastName"
-        label="Last Name"
-        disabled={isLoading}
-        register={register}
-        errors={errors}
-        validate={handleNameValidation}
-        required
-      />
-      {errors.lastName?.message && (
-        <small className="text-rose-500 px-3">
-          {errors.lastName.message.toString()}
-        </small>
-      )}
+
       <Input
         id="password"
         label="Password"
@@ -143,13 +127,6 @@ function RegisterModal({}: Props) {
           {errors.password.message.toString()}
         </small>
       )}
-      {/* <Input
-        id="phoneNumber"
-        label="phone number (optional)"
-        disabled={isLoading}
-        register={register}
-        errors={errors}
-      /> */}
     </div>
   );
 
