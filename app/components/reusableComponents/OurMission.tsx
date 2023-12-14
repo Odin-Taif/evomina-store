@@ -27,7 +27,7 @@ const OurMission: FunctionComponent = () => {
             treasures that we want to use. Our goal is to tap into the healing
             powers of nature and support you in your daily life with them.
           </p>
-          <span className="bg-amber-400 p-3 my-8 rounded hover:cursor-pointer hover:bg-amber-500">
+          <span className="bg-amber-400 p-3 my-8 rounded hover:cursor-pointer hover:bg-amber-500 text-white">
             <Link href="/">Find out more</Link>
           </span>
         </div>

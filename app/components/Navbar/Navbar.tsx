@@ -82,35 +82,11 @@ const Navbar = (props: Props) => {
                   Contact
                 </a>
               </li>
-              {/* {session?.user && (
-                <li>
-                  <a href="myproducts" className="py-3 inline-block w-full">
-                    My Products
-                  </a>
-                </li>
-              )} */}
             </ul>
           </nav>
         </div>
         <div className="flex items-center space-x-4">
           <SearchBar />
-          {/* <div
-            onClick={() => setShowProfile(!showProfile)}
-            className="relative cursor-pointer"
-          >
-            <img
-              src="avatar.png"
-              className="w-[35px] h-[35px] rounded-full object-cover"
-              alt=""
-            />
-            <div
-              className={`absolute bg-white z-[2] rounded-lg shadow-lg ${
-                showProfile ? "" : "hidden"
-              }`}
-            >
-              <SignOut />
-            </div>
-          </div> */}
           <UserProfile />
 
           {session?.user ? (
@@ -121,7 +97,7 @@ const Navbar = (props: Props) => {
             </Link>
           ) : (
             <div onClick={loginModel.onOpen}>
-              <div className="p-2 bg-gray-100 rounded-full">
+              <div className="p-2 bg-gray-100 rounded-full hover:cursor-pointer">
                 <CiShoppingCart size={20} />
               </div>
             </div>

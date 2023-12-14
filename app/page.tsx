@@ -1,4 +1,5 @@
 import Container from "./components/container/Container";
+import NewsletterForm from "./components/newsLetter/NewsLetterForm";
 import ContactSection from "./components/reusableComponents/ContactSection";
 import OurMission from "./components/reusableComponents/OurMission";
 
@@ -7,8 +8,13 @@ export default async function Home() {
     <>
       <div className="px-5 max-w-[1280px] mx-auto">
         <Container />
-        <OurMission />
         <ContactSection />
+        <OurMission />
+        <NewsletterForm
+          status={undefined}
+          message={undefined}
+          onValidated={undefined}
+        />
       </div>
     </>
   );
