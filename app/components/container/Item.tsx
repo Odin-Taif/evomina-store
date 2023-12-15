@@ -1,41 +1,73 @@
-import React from "react";
+"use client";
+import React, { useContext, useEffect, useState } from "react";
+// import { AiOutlineHeart } from "react-icons/ai";
 import Link from "next/link";
-import prisma from "@/app/prismadb";
+// import prisma from "@/app/prismadb";
+import { CounterContext } from "@/app/context/counter.context";
+import axios from "axios";
 
 type Props = {};
 
-const Item = async (props: Props) => {
-  const products = await prisma.product.findMany();
-
-  if (products.length === 0) {
+const Item = (props: Props) => {
+  // const products = await prisma.product.findMany();
+  const { state } = useContext(CounterContext);
+  const [products, setProducts] = useState<any[]>([]);
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get("/api/filterproduct", {
+          params: {
+            categories: state.selectedCategory,
+            // price: {
+            //   min: price.min,
+            //   max: price.max,
+            // },
+          },
+          headers: {
+            "Content-Type": "application/json",
+          },
+        });
+        setProducts(response.data.products);
+        // console.log("Response", response.data.products);
+      } catch (error) {
+        console.log("Error", error);
+      }
+    };
+    fetchData();
+  }, [state.selectedCategory]);
+  // console.log(products)
+  if (!products || products.length === 0) {
     return <div>empty</div>;
   }
   return (
-    <div className="grid lg:grid-cols-4 sm:grid-cols-2 grid-cols-1 md:gap-4 gap-5 ">
-      {products.map((product) => (
-        <div key={product.id}>
-          <Link href={`/dashboard/${product.id}`}>
-            <div className="relative border border-amber-400 rounded-lg">
-              <img
-                src={product.images.split(",")[0]}
-                className="w-[300px] h-[240px] object-cover object-top rounded-lg"
-                alt=""
-              />
+    <div>
+      <div className="grid lg:grid-cols-3 sm:grid-cols-2 grid-cols-1 md:gap-20 gap-12 ">
+        {products &&
+          products.map((product) => (
+            <div key={product.id}>
+              <Link href={`/dashboard/${product.id}`}>
+                <div className="relative rounded-lg">
+                  <img
+                    src={product.images.split(",")[0]}
+                    className="w-[250px] h-[300px] object-cover object-top rounded-lg"
+                    alt=""
+                  />
+                </div>
+                <div className="flex items-center justify-between mt-4">
+                  <div>
+                    <h1 className="text-[14px] font-medium max-w-[150px] whitespace-nowrap overflow-hidden">
+                      {product.title}
+                    </h1>
+                    <p className="text-[13px] opacity-60">{product.store}</p>
+                  </div>
+                  <span className="px-2 font-medium bg-gray-100 rounded-lg">
+                    ${product.price}.00
+                  </span>
+                </div>
+              </Link>
             </div>
-            <div className="flex flex-col items-left justify-between mt-2">
-              <div>
-                <h1 className="text-[14px] font-medium max-w-[150px] whitespace-nowrap overflow-hidden">
-                  {product.title}
-                </h1>
-                <span className="font-medium bg-gray-100 rounded-lg">
-                  ${product.price}.00
-                </span>
-                <p className="text-[13px] opacity-60">{product.store}</p>
-              </div>
-            </div>
-          </Link>
-        </div>
-      ))}
+          ))}
+      </div>
     </div>
   );
 };

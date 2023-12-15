@@ -16,7 +16,7 @@ import EmptyState from "../components/EmptyState";
 
 // export default page;
 
-const AssistentPage = async (props) => {
+const AssistentPage = async (props: any) => {
   // Attempting to retrieve the current user's session on the server-side
   const currentUser = await getServerSession(options);
 

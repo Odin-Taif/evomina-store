@@ -1,4 +1,5 @@
-import React from "react";
+"use client";
+import React, { useContext } from "react";
 import Filter from "./Filter";
 import Item from "./Item";
 import ResponsiveDrawer from "./FilterSearchDrawer";
