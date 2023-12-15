@@ -8,10 +8,6 @@ type StateType = {
   price: {};
 };
 
-type ActionType = {
-  type: string;
-};
-
 const initialState: StateType = {
   count: 0,
   selectedCategory: [
@@ -48,19 +44,6 @@ const reducer = (state: StateType, action: any) => {
       return state;
   }
 };
-
-// const reducer = (state: StateType, action: any) => {
-//   switch (action.type) {
-//     case "SET_CATEGORY":
-//       return { ...state, selectedCategory: state.selectedCategory };
-//     case "DECREMENT":
-//       return { ...state, count: state.count - 1 };
-//     case "RESET":
-//       return { ...state, count: 0 };
-//     default:
-//       return state;
-//   }
-// };
 
 export const CounterContext = createContext<{
   state: StateType;
