@@ -4,7 +4,6 @@ import { options } from "@/app/api/auth/[...nextauth]/options";
 import Link from "next/link";
 import prisma from "@/app/prismadb";
 import { AiTwotoneEdit } from "react-icons/ai";
-import Navbar from "../components/Navbar/Navbar";
 import DeleteProduct from "../components/DeleteProduct";
 
 type Props = {};
@@ -29,7 +28,6 @@ const page = async (props: Props) => {
   }
   return (
     <div className="max-w-[1280px] mx-auto">
-      <Navbar />
       <div>
         {allmyproduct.map((product) => (
           <div
