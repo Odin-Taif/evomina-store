@@ -17,9 +17,7 @@ interface Props {
   title: string;
   description: string;
   category: string;
-
   store: string;
-
   price: number;
   images: string;
   userId: number;
@@ -32,7 +30,6 @@ const Info: React.FC<Props> = ({
   description,
   id,
   price,
-
   userId,
   store,
   rating,
@@ -45,8 +42,11 @@ const Info: React.FC<Props> = ({
     <div className="relative info">
       <h1 className="text-2xl font-semibold">{title}</h1>
       <h3 className="text-sm text-neutral-500">{store}</h3>
-      <div className="flex items-center mt-7 space-x-10">
+      <div className="flex items-center mt-7 space-x-2">
         <AddCart productId={id} />
+        <span className="font-medium w-fit px-2 bg-gray-100 rounded-lg">
+          Add To Cart
+        </span>
       </div>
       <hr className="w-9/12 mt-10" />
       <div className="grid grid-cols-2 gap-10 opacity-70 mt-5">

@@ -1,10 +1,10 @@
 "use client";
 import React from "react";
-import Link from "next/link";
 import axios from "axios";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { CiShoppingCart, CiCreditCard1 } from "react-icons/ci";
+import { MdOutlineAddShoppingCart } from "react-icons/md";
 import useLoginModel from "../hook/useLoginModal";
 
 type Props = {
@@ -25,7 +25,7 @@ const AddCart = ({ productId }: Props) => {
             userId: id,
           })
           .then((response) => {
-            router.push("/cart");
+            // router.push("/cart");
             console.log(response.data);
           });
       } catch (error) {
@@ -38,12 +38,11 @@ const AddCart = ({ productId }: Props) => {
   return (
     <div
       onClick={handleCart}
-      className="flex items-center space-x-4 bg-amber-600 text-white px-6 p-2 rounded-full cursor-pointer"
+      className="flex items-center space-x-4 bg-amber-400 text-gray-100 p-2 rounded-full cursor-pointer hover:bg-amber-500"
     >
       <span>
-        <CiShoppingCart size={24} />
+        <MdOutlineAddShoppingCart size={20} />
       </span>
-      <span className="text-wm">Add to Cart</span>
     </div>
   );
 };

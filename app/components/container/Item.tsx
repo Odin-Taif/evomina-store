@@ -5,6 +5,8 @@ import Link from "next/link";
 // import prisma from "@/app/prismadb";
 import { CounterContext } from "@/app/context/counter.context";
 import axios from "axios";
+import { MdOutlineAddShoppingCart } from "react-icons/md";
+import AddCart from "../AddCart";
 
 type Props = {};
 
@@ -38,34 +40,40 @@ const Item = (props: Props) => {
     return <div>empty</div>;
   }
   return (
-    <div>
-      <div className="grid lg:grid-cols-3 sm:grid-cols-2 grid-cols-1 md:gap-20 gap-12 ">
-        {products &&
-          products.map((product) => (
-            <div key={product.id}>
-              <Link href={`/dashboard/${product.id}`}>
-                <div className="relative rounded-lg">
-                  <img
-                    src={product.images.split(",")[0]}
-                    className="w-[250px] h-[300px] object-cover object-top rounded-lg"
-                    alt=""
-                  />
+    <div className="grid lg:grid-cols-4 sm:grid-cols-2 grid-cols-1 md:gap-5 gap-5 ">
+      {products &&
+        products.map((product) => (
+          <div key={product.id}>
+            <Link href={`/dashboard/${product.id}`}>
+              <div className="relative rounded-lg border border-amber-300 ">
+                <img
+                  src={product.images.split(",")[0]}
+                  className="w-[200px] h-[200px] object-cover object-top rounded-lg"
+                  alt=""
+                />
+                {/* <span className="absolute bottom-0 right-0 bg-amber-300 text-black-200 p-2 rounded hover:bg-amber-500 m-2">
+                  <MdOutlineAddShoppingCart />
+                </span> */}
+              </div>
+              <div className="flex flex-col items-left justify-between px-2 mt-2">
+                <div>
+                  <h1 className="text-[14px] font-medium max-w-[150px] whitespace-nowrap overflow-hidden">
+                    {product.title}
+                  </h1>
+                  <p className="text-[13px] opacity-60">{product.store}</p>
                 </div>
-                <div className="flex items-center justify-between mt-4">
-                  <div>
-                    <h1 className="text-[14px] font-medium max-w-[150px] whitespace-nowrap overflow-hidden">
-                      {product.title}
-                    </h1>
-                    <p className="text-[13px] opacity-60">{product.store}</p>
-                  </div>
-                  <span className="px-2 font-medium bg-gray-100 rounded-lg">
-                    ${product.price}.00
-                  </span>
-                </div>
-              </Link>
+                <span className="font-medium w-fit px-2 bg-gray-100 rounded-lg">
+                  ${product.price}.00
+                </span>
+              </div>
+            </Link>
+            <div className="relative">
+              <span className="absolute bottom-0 right-0 w-fit">
+                <AddCart productId={product.id} />
+              </span>
             </div>
-          ))}
-      </div>
+          </div>
+        ))}
     </div>
   );
 };
