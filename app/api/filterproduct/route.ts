@@ -8,10 +8,8 @@ export async function GET(request: Request) {
   try {
     const searchParams = new URLSearchParams(request.url.split("?")[1]);
     const categories = searchParams.getAll("categories[]");
-    // console.log(categories);
     const minPrice = parseInt(searchParams.get("price[min]") || "0");
     const maxPrice = parseInt(searchParams.get("price[max]") || "100000");
-
     const products = await prisma.product.findMany({
       where: {
         OR: categories.map((category) => ({
