@@ -1,14 +1,12 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { signIn, signOut, useSession } from "next-auth/react";
-
+import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import Para from "../components/Para";
 import ImageUpload from "../components/ImageUpload";
 
 type Props = {};
-
 const Productform = (props: Props) => {
   const { data: session } = useSession();
   const id = session?.user.id;

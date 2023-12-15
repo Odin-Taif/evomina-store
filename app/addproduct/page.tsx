@@ -1,7 +1,5 @@
 import React from "react";
 import Productform from "./productform";
-import { useSession } from "next-auth/react";
-
 import { getServerSession } from "next-auth";
 import { options } from "../api/auth/[...nextauth]/options";
 import ClientOnly from "../components/ClientOnly";
@@ -16,7 +14,7 @@ import EmptyState from "../components/EmptyState";
 
 // export default page;
 
-const AssistentPage = async (props: any) => {
+const AssistentPage = async () => {
   // Attempting to retrieve the current user's session on the server-side
   const currentUser = await getServerSession(options);
 
