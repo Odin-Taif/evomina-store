@@ -15,12 +15,10 @@ import {
   isValidName,
 } from "@/utils/AuthValidation";
 import useRegisterModal from "@/app/hook/useRegisterModal";
-import useConfirmEmailModel from "@/app/hook/useConfimEmailFormModel";
 import useLoginModel from "@/app/hook/useLoginModal";
 type Props = {};
 function RegisterModal({}: Props) {
   const registerModel = useRegisterModal(); // Custom hook to manage the state of the registration modal
-  const confirmEmail = useConfirmEmailModel(); // Custom hook to manage the state of the email confirmation modal
   const loginModel = useLoginModel(); // Custom hook to manage the state of the login modal
   const [isLoading, setIsLoading] = useState(false); // State to manage loading status
 

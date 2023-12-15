@@ -11,6 +11,7 @@ type Props = {};
 const Item = (props: Props) => {
   // const products = await prisma.product.findMany();
   const { state } = useContext(CounterContext);
+  console.log(state);
   const [products, setProducts] = useState<any[]>([]);
   useEffect(() => {
     const fetchData = async () => {
@@ -18,10 +19,7 @@ const Item = (props: Props) => {
         const response = await axios.get("/api/filterproduct", {
           params: {
             categories: state.selectedCategory,
-            // price: {
-            //   min: price.min,
-            //   max: price.max,
-            // },
+            price: state.price,
           },
           headers: {
             "Content-Type": "application/json",
@@ -34,7 +32,7 @@ const Item = (props: Props) => {
       }
     };
     fetchData();
-  }, [state.selectedCategory]);
+  }, [state.selectedCategory, state.price]);
   // console.log(products)
   if (!products || products.length === 0) {
     return <div>empty</div>;

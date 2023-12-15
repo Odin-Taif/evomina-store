@@ -36,6 +36,7 @@ const Filter = (props: Props) => {
       ...price,
       [e.target.name]: value,
     });
+    dispatch({ type: "SET_PRICE", price: price });
   };
 
   const handlMaxChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -45,6 +46,7 @@ const Filter = (props: Props) => {
       ...price,
       [e.target.name]: value,
     });
+    dispatch({ type: "SET_PRICE", price: price });
   };
 
   const toggleCategory = (category: string) => {

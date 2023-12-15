@@ -5,6 +5,7 @@ import React, { Dispatch, createContext, useReducer } from "react";
 type StateType = {
   count: number;
   selectedCategory: string[];
+  price: {};
 };
 
 type ActionType = {
@@ -24,10 +25,12 @@ const initialState: StateType = {
     "Incense burners",
     "Other",
   ],
+  price: {},
 };
 
 export const actionType = {
   SET_CATEGORY: "SET_CATEGORY",
+  SET_PRICE: "SET_PRICE",
 };
 const reducer = (state: StateType, action: any) => {
   switch (action.type) {
@@ -35,6 +38,11 @@ const reducer = (state: StateType, action: any) => {
       return {
         ...state,
         selectedCategory: action.selectedCategory,
+      };
+    case actionType.SET_PRICE:
+      return {
+        ...state,
+        price: action.price,
       };
     default:
       return state;

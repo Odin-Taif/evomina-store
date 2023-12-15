@@ -14,7 +14,6 @@ import Heading from "../reusableComponents/Heading";
 import { signIn } from "next-auth/react";
 import useRegisterModal from "@/app/hook/useRegisterModal";
 import useLoginModel from "@/app/hook/useLoginModal";
-import useForgetPasswordModel from "@/app/hook/useForgetPasswordModel";
 import { isValidEmail, isValidPassword } from "@/utils/AuthValidation";
 type Props = {};
 // Defining the types for the props of the component.
@@ -27,7 +26,7 @@ function LoginModal({}: Props) {
   // Using the custom hook to manage the register modal's state.
   const loginModel = useLoginModel();
   // Using the custom hook to manage the login modal's state.
-  const forgetPassword = useForgetPasswordModel();
+
   // Using the custom hook to manage the forget password modal's state.
   const [isLoading, setIsLoading] = useState(false);
   // State to manage loading state of the form.
@@ -92,11 +91,11 @@ function LoginModal({}: Props) {
     registerModel.onOpen();
   }, [loginModel, registerModel]);
 
-  // Function to toggle between SignIn and ForgetPassword modals.
-  const toggleSignInForgotPassword = useCallback(() => {
-    loginModel.onClose();
-    forgetPassword.onOpen();
-  }, [loginModel, forgetPassword]);
+  // // Function to toggle between SignIn and ForgetPassword modals.
+  // const toggleSignInForgotPassword = useCallback(() => {
+  //   loginModel.onClose();
+  //   forgetPassword.onOpen();
+  // }, [loginModel, forgetPassword]);
 
   // Content for the body of the modal.
   const bodyContent = (
