@@ -1,4 +1,5 @@
 import Container from "./components/container/Container";
+import MiniDrawer from "./components/container/FilterSearchDrawer";
 import NewsletterForm from "./components/newsLetter/NewsLetterForm";
 import ContactSection from "./components/reusableComponents/ContactSection";
 import OurMission from "./components/reusableComponents/OurMission";

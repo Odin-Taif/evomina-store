@@ -13,7 +13,6 @@ import useLoginModel from "@/app/hook/useLoginModal";
 type Props = {};
 
 const Navbar = (props: Props) => {
-  const [showProfile, setShowProfile] = useState<boolean>(false);
   const [showNav, setShowNav] = useState<boolean>(false);
   const loginModel = useLoginModel();
   const { data: session } = useSession();
@@ -21,36 +20,6 @@ const Navbar = (props: Props) => {
   // console.log(session?.user)
   // Array of menu items for the user dropdown
 
-  const SignOut = () => {
-    if (session && session.user) {
-      return (
-        <ul className="py-5 px-1 text-neutral-600">
-          <li className="hover:bg-gray-100 hover:text-neutral-900 px-5 py-2 cursor-pointer">
-            {session.user.name}
-          </li>
-          <li
-            onClick={() => signOut()}
-            className="whitespace-nowrap hover:text-red-600 px-5 py-2 cursor-pointer"
-          >
-            SignOut
-          </li>
-          <li className="whitespace-nowrap hover:bg-gray-100 hover:text-neutral-900 px-5 py-2 cursor-pointer">
-            <a href="/addproduct">Add Product</a>
-          </li>
-        </ul>
-      );
-    }
-    return (
-      <ul>
-        <li
-          onClick={() => signIn()}
-          className="whitespace-nowrap hover:bg-gray-100 hover:text-neutral-900 px-5 py-2 cursor-pointer"
-        >
-          SignIn
-        </li>
-      </ul>
-    );
-  };
   return (
     <div className="border-b border-amber-400 mb-2">
       <div className="flex items-center justify-between py-2 px-4 relative">
@@ -131,17 +100,6 @@ const Navbar = (props: Props) => {
             </a>
           </li>
         </ul>
-        <div className="flex items-center bg-gray-100 p-2 rounded-lg my-4 py-3">
-          <input
-            type="text"
-            className="outline-none w-full bg-transparent ml-2 caret-blue-500 placeholder:font-light placeholder:text-gray-600 text-[15px]"
-            placeholder="Search"
-            autoComplete="false"
-          />
-          <button>
-            <BiSearch size={20} className="opacity-50" />
-          </button>
-        </div>
       </div>
     </div>
   );
