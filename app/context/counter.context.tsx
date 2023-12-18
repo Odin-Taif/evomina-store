@@ -3,7 +3,10 @@ import React, { Dispatch, createContext, useReducer } from "react";
 type StateType = {
   count: number;
   selectedCategory: string[];
-  price: {};
+  price: {
+    max: 1000;
+    min: 0;
+  };
 };
 
 const initialState: StateType = {
@@ -19,7 +22,10 @@ const initialState: StateType = {
     "Incense burners",
     "Other",
   ],
-  price: {},
+  price: {
+    min: 0,
+    max: 1000,
+  },
 };
 
 export const actionType = {

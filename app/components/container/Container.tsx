@@ -1,7 +1,7 @@
-"use client";
+// "use client";
 import React from "react";
 import Filter from "./Filter";
-import Item from "./Item";
+import Items from "./Items";
 import ResponsiveDrawer from "./FilterSearchDrawer";
 
 type Props = {};
@@ -17,7 +17,7 @@ const Container = (props: Props) => {
           <Filter />
         </div>
         <div className="mx-auto px-auto md:px-4">
-          <Item />
+          <Items />
         </div>
       </div>
     </div>

@@ -2,8 +2,9 @@
 import React, { useState, useEffect, useContext } from "react";
 import { BsCurrencyDollar } from "react-icons/bs";
 import { BiCategoryAlt } from "react-icons/bi";
-import axios from "axios";
 import { CounterContext } from "@/app/context/counter.context";
+import { FormLabel, Slider, TextField } from "@mui/material";
+import { Controller, useForm } from "react-hook-form";
 
 type Props = {};
 
@@ -21,14 +22,22 @@ const Filter = (props: Props) => {
   ];
 
   const { state, dispatch } = useContext(CounterContext);
+
+  // const { handleSubmit, reset, control, setValue } = useForm<any>({
+  //   defaultValues: state.price,
+  // });
   // console.log(state);
   const [selectedCategories, setSelectedCategories] =
     useState<string[]>(allCategories);
   const [price, setPrice] = useState({
     min: 0,
-    max: 600,
+    max: 1000,
   });
-  // console.log(selectedCategories);
+
+  useEffect(() => {
+    dispatch({ type: "SET_PRICE", price: price });
+  }, [price]);
+
   const handelMinChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value =
       e.target.name === "min" ? parseInt(e.target.value) : e.target.value;
@@ -36,7 +45,6 @@ const Filter = (props: Props) => {
       ...price,
       [e.target.name]: value,
     });
-    dispatch({ type: "SET_PRICE", price: price });
   };
 
   const handlMaxChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -46,7 +54,6 @@ const Filter = (props: Props) => {
       ...price,
       [e.target.name]: value,
     });
-    dispatch({ type: "SET_PRICE", price: price });
   };
 
   const toggleCategory = (category: string) => {
@@ -204,9 +211,6 @@ const Filter = (props: Props) => {
             </div>
           </div>
         </div>
-        {/* <div className="mx-auto px-auto md:px-4">
-          <Item price={price} selectedCategories={selectedCategories} />
-        </div> */}
       </div>
     </div>
   );

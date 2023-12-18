@@ -17,7 +17,7 @@ function Loader() {
       <div className="px-4 py-12">
         <div className="rounded relative bg-white py-12">
           {/* Spinner container */}
-          <div className="rounded-full bg-indigo-100 w-[177px] h-[177px] relative flex justify-center items-center mx-auto animate-spin">
+          <div className="rounded-full bg-amber-100 w-[177px] h-[177px] relative flex justify-center items-center mx-auto animate-spin">
             {/* SVG spinner graphic */}
             <svg
               className="absolute top-0 left-0"
@@ -34,7 +34,7 @@ function Loader() {
               ></path>
             </svg>
             {/* Overlay circle to create the "donut" effect */}
-            <div className="rounded-full bg-white w-[150px] h-[150px]" />
+            <div className="rounded-full bg-white w-[100px] h-[150px]" />
           </div>
           {/* Loading text */}
           <p className="mt-6 font-medium text-gray-800 text-center animate-bounce text-xl">

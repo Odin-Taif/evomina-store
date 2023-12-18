@@ -31,7 +31,7 @@ const AllCartProduct = async (props: Props) => {
     return (
       <div className="relative flex items-center justify-center">
         <img src="empty.png" alt="" />
-        <h1 className="absolute top-[80%] text-2xl text-purple-600">
+        <h1 className="absolute top-[80%] text-2xl text-amber-500">
           Empty Cart
         </h1>
       </div>

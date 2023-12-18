@@ -1,25 +1,42 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { CiShoppingCart } from "react-icons/ci";
 import { BsChevronCompactUp } from "react-icons/bs";
-import { BiLogIn, BiSearch } from "react-icons/bi";
 import SearchBar from "../SearchBar";
-import { signIn, signOut, useSession } from "next-auth/react";
+import { useSession } from "next-auth/react";
 import Logo from "./Logo";
 import UserProfile from "./UserProfile";
 import useLoginModel from "@/app/hook/useLoginModal";
-
 type Props = {};
 
 const Navbar = (props: Props) => {
   const [showNav, setShowNav] = useState<boolean>(false);
+  // const [cartProducts, setCartProducts] = useState<any[]>([]);
+  // const [products, setProducts] = useState<any[]>([]);
   const loginModel = useLoginModel();
   const { data: session } = useSession();
 
+  // useEffect(() => {
+  //   const fetchCartProducts = async () => {
+  //     try {
+  //       const cartProducts = await prisma.cart.findMany({
+  //         where: {
+  //           userId: session?.user?.id,
+  //         },
+  //       });
+  //       setCartProducts(cartProducts);
+  //       console.log(cartProducts);
+  //       // console.log("Response", response.data.products);
+  //     } catch (cartProducts) {
+  //       console.log("Error");
+  //     }
+  //   };
+  //   fetchCartProducts();
+  // }, [cartProducts]);
+
   // console.log(session?.user)
   // Array of menu items for the user dropdown
-
   return (
     <div className="border-b border-amber-400 mb-2">
       <div className="flex items-center justify-between py-2 px-4 relative">
@@ -95,8 +112,20 @@ const Navbar = (props: Props) => {
             </a>
           </li>
           <li>
-            <a href="/filters" className="py-3 inline-block w-full ">
-              Filters
+            <a
+              href="/"
+              className="py-3 inline-block w-full hover:text-yellow-600"
+            >
+              Contact
+            </a>
+          </li>
+
+          <li>
+            <a
+              href="/aboutus"
+              className="py-3 inline-block w-full hover:text-yellow-600"
+            >
+              About
             </a>
           </li>
         </ul>

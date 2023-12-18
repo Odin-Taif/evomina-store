@@ -8,7 +8,6 @@ import List from "@mui/material/List";
 import Filter from "./Filter";
 import { BsSliders2Vertical } from "react-icons/bs";
 import { BiSearch } from "react-icons/bi";
-
 const drawerWidth = 240;
 
 interface Props {
