@@ -70,7 +70,7 @@ const Navbar = (props: Props) => {
               </li>
               <li>
                 <a
-                  href="filters"
+                  href="/contact"
                   className="py-3 inline-block w-full hover:text-yellow-600"
                 >
                   Contact
@@ -121,7 +121,7 @@ const Navbar = (props: Props) => {
           </li>
           <li>
             <a
-              href="/"
+              href="/contact"
               className="py-3 inline-block w-full hover:text-yellow-600"
             >
               Contact

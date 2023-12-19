@@ -14,8 +14,8 @@ function Footer({}: Props) {
   // Defining the data to be displayed in the footer columns
   const itemData = [
     [
-      { name: "Datenschutz", href: "/datenschutz" },
-      { name: "Impressum", href: "/Impressum" },
+      { name: "Datenschutz", href: "/privacy&policy" },
+      { name: "Impressum", href: "/imprint" },
       { name: "FAQ", href: "/FAQ" },
       { name: "AGB", href: "/agb" },
     ],
@@ -23,7 +23,7 @@ function Footer({}: Props) {
       { name: "Home", href: "/" },
       { name: "Contact", href: "/contact" },
       { name: "About Us", href: "/aboutus" },
-      { name: "Blog", href: "/blog" },
+      // { name: "Blog", href: "/blog" },
     ],
   ];
 

@@ -2,14 +2,13 @@
 
 import Image from "next/image";
 import { FunctionComponent } from "react";
-import Container from "../components/reusableComponents/Container";
 import Heading from "../components/reusableComponents/Heading";
 
 // Defining the OurMission component as a functional component
 const AboutEvomina: FunctionComponent = () => {
   // The component returns JSX to be rendered
   return (
-    <Container>
+    <div className="max-w-[2520px] mx-auto xl:px-20 md:px-10 sm:px-4 px-3 py-10 bg-amber-50">
       <div className="grid grid-cols-4 mx-auto">
         {/* Div for the text content with styling and responsive design */}
 
@@ -51,7 +50,7 @@ const AboutEvomina: FunctionComponent = () => {
       </div>
       {/* Horizontal rule for visual separation */}
       <hr className="my-4" />
-    </Container>
+    </div>
   );
 };
 

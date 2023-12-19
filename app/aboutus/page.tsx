@@ -13,8 +13,8 @@ export default async function Aboutus() {
       {/* The OurMission component is rendered first. */}
       <AboutEvomina />
       {/* The OurGoals component is rendered next. */}
-      <OurValues />
       <OurHistory />
+      <OurValues />
     </div>
   );
 }
