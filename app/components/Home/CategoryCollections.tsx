@@ -19,7 +19,7 @@ export default function CategoryCollections() {
                 alt="girl-image"
               />
               <Link
-                href={`/categoryshop/essential-oil`}
+                href={`/filters/Essential oil`}
                 className="focus:outline-none item focus:ring-2 focus:ring-offset-2 focus:ring-gray-400 bottom-4 z-10 absolute text-base font-medium leading-none text-gray-800 py-3 w-36 bg-white mx-auto text-center"
               >
                 Essential oil
@@ -36,10 +36,10 @@ export default function CategoryCollections() {
                   alt="shoe-image"
                 />
                 <Link
-                  href={`/categoryshop/essential-oil`}
+                  href={`/filters/Accessories`}
                   className="focus:outline-none item focus:ring-2 focus:ring-offset-2 focus:ring-gray-400 bottom-4 z-10 absolute text-base font-medium leading-none text-gray-800 py-3 w-36 bg-white mx-auto text-center"
                 >
-                  Essential oil
+                  Accessories
                 </Link>
                 <div className="absolute opacity-0 group-hover:opacity-100 transition duration-500 bottom-3 py-6 z-0 px-20 w-36 bg-white bg-opacity-50" />
               </div>
@@ -51,7 +51,7 @@ export default function CategoryCollections() {
                   alt="watch-image"
                 />
                 <Link
-                  href={`/categoryshop/essential-oil`}
+                  href={`/filters/essential-oil`}
                   className="focus:outline-none item focus:ring-2 focus:ring-offset-2 focus:ring-gray-400 bottom-4 z-10 absolute text-base font-medium leading-none text-gray-800 py-3 w-36 bg-white mx-auto text-center"
                 >
                   Essential oil
@@ -67,7 +67,7 @@ export default function CategoryCollections() {
                 alt="girl-image"
               />
               <Link
-                href={`/categoryshop/essential-oil`}
+                href={`/filters/essential-oil`}
                 className="focus:outline-none item focus:ring-2 focus:ring-offset-2 focus:ring-gray-400 bottom-4 z-10 absolute text-base font-medium leading-none text-gray-800 py-3 w-36 bg-white mx-auto text-center"
               >
                 Essential oil
@@ -87,7 +87,7 @@ export default function CategoryCollections() {
                 alt="olive-tatiane-Im-Ez-F9-B91-Mk-unsplash-2"
               />
               <Link
-                href={`/categoryshop/essential-oil`}
+                href={`/filters/essential-oil`}
                 className="focus:outline-none item focus:ring-2 focus:ring-offset-2 focus:ring-gray-400 bottom-4 z-10 absolute text-base font-medium leading-none text-gray-800 py-3 w-36 bg-white mx-auto text-center"
               >
                 Essential oil
@@ -108,7 +108,7 @@ export default function CategoryCollections() {
               alt="olive-tatiane-Im-Ez-F9-B91-Mk-unsplash-2"
             />
             <Link
-              href={`/categoryshop/essential-oil`}
+              href={`/filters/essential-oil`}
               className="focus:outline-none item focus:ring-2 focus:ring-offset-2 focus:ring-gray-400 bottom-4 z-10 absolute text-base font-medium leading-none text-gray-800 py-3 w-36 bg-white mx-auto text-center"
             >
               Essential oil

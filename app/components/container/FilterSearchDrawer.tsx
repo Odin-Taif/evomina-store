@@ -5,7 +5,7 @@ import Divider from "@mui/material/Divider";
 import Drawer from "@mui/material/Drawer";
 import IconButton from "@mui/material/IconButton";
 import List from "@mui/material/List";
-import Filter from "./Filter";
+import Filter from "../../filters/Filter";
 import { BsSliders2Vertical } from "react-icons/bs";
 import { BiSearch } from "react-icons/bi";
 const drawerWidth = 240;
@@ -16,12 +16,13 @@ interface Props {
    * Remove this when copying and pasting into your project.
    */
   window?: () => Window;
+  selectedCategories: any;
+  setSelectedCategories: any;
 }
 
 export default function ResponsiveDrawer(props: Props) {
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
-
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
   };
@@ -30,7 +31,10 @@ export default function ResponsiveDrawer(props: Props) {
     <div>
       <Divider />
       <List>
-        <Filter />
+        <Filter
+          selectedCategories={props.selectedCategories}
+          setSelectedCategories={props.setSelectedCategories}
+        />
       </List>
     </div>
   );
