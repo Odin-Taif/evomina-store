@@ -189,7 +189,7 @@ export default function CategoryCollections() {
             <div className="relative group flex justify-center items-center h-60 w-full mt-4 md:hidden md:mt-8 lg:hidden">
               <img
                 className="object-center object-cover h-full w-full hidden md:block"
-                src="https://i.ibb.co/6FjW19n/olive-tatiane-Im-Ez-F9-B91-Mk-unsplash-2.png"
+                src="/incense-sticks.webp"
                 alt="girl-image"
               />
               <img
