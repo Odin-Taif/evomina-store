@@ -27,6 +27,7 @@ const Filter = ({ selectedCategories, setSelectedCategories }: Props) => {
     "Frankincense",
     "Essential oil",
     "Incense burners",
+    "Incense sticks",
     "Other",
   ];
   const [price, setPrice] = useState({

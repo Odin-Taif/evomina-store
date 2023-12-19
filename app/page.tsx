@@ -10,7 +10,7 @@ export default async function Home() {
     <>
       {/* <Header /> */}
       <Banner />
-      <div className="px-5 max-w-[1280px] mx-auto">
+      <div className="max-w-[1280px] mx-auto">
         <CategoryCollections />
         <hr className="my-4" />
         <OurMission />
