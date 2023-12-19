@@ -49,6 +49,14 @@ const Navbar = (props: Props) => {
                   href="/"
                   className="py-3 inline-block w-full hover:text-yellow-600"
                 >
+                  Home
+                </a>
+              </li>
+              <li>
+                <a
+                  href="/shop"
+                  className="py-3 inline-block w-full hover:text-yellow-600"
+                >
                   Shop
                 </a>
               </li>
