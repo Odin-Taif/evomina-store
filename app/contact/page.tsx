@@ -6,7 +6,11 @@ import { useState } from "react";
 import { toast } from "react-toastify"; // For showing toast notifications.
 import { useForm, FieldValues, SubmitHandler } from "react-hook-form"; // Hook for handling form validation and submission.
 import { BsFillSendCheckFill } from "react-icons/bs"; // React icons, though it seems to be imported but not used.
-import { isValidEmail } from "@/utils/AuthValidation"; // Utility function for email validation.
+import {
+  isValidEmail,
+  isValidName,
+  isValidPhoneNumber,
+} from "@/utils/AuthValidation"; // Utility function for email validation.
 import { MoonLoader } from "react-spinners"; // Spinner component to indicate loading state.
 import Container from "../components/reusableComponents/Container";
 import ContactTextArea from "../components/inputs/ContactTextArea";
@@ -20,6 +24,9 @@ const Contact: FC = () => {
     const isValid = isValidEmail(email);
     return isValid;
   };
+  const handleNameValidation = (name: string) => isValidName(name);
+  const handlePhoneNumberValidation = (telephone: string) =>
+    isValidPhoneNumber(telephone);
 
   // Using 'react-hook-form' for form handling.
   const {
@@ -29,7 +36,9 @@ const Contact: FC = () => {
     formState: { errors },
   } = useForm<FieldValues>({
     defaultValues: {
+      name: "",
       email: "",
+      phoneNumber: "",
       message: "",
     },
   });
@@ -61,14 +70,11 @@ const Contact: FC = () => {
               <div className="w-full px-4 lg:w-1/2 xl:w-6/12">
                 <div className="mb-12 max-w-[570px] lg:mb-0">
                   <h2 className="mb-6 text-[32px] font-bold uppercase text-dark sm:text-[40px] lg:text-[36px] xl:text-[40px]">
-                    GET IN TOUCH WITH US
+                    Do you have a question or concern?
                   </h2>
                   <p className="text-base leading-relaxed mb-9 text-body-color">
-                    If you have any questions or requests, you can contact us at
-                    info@evomina.com. Your messages will be stored for six
-                    months to process your request and for any follow-up
-                    questions. Your data will not be shared without your
-                    consent.
+                    Please feel free to contact us and we will endeavor to get
+                    back to you as quickly as possible.
                   </p>
                   <div className="mb-8 flex w-full max-w-[370px]">
                     <div className="mr-3 flex h-[60px] w-full max-w-[60px] items-center justify-center overflow-hidden rounded bg-primary bg-opacity-5 text-primary sm:h-[70px] sm:max-w-[70px]">
@@ -137,6 +143,20 @@ const Contact: FC = () => {
               <div className="w-full px-4 lg:w-1/2 xl:w-5/12">
                 <div className="relative p-8 bg-white rounded-lg shadow-lg sm:p-12">
                   <Input
+                    id="name"
+                    label="Full Name"
+                    disabled={isLoading}
+                    register={register}
+                    errors={errors}
+                    validate={handleNameValidation}
+                    required
+                  />
+                  {errors.firstName?.message && (
+                    <small className="text-rose-500 px-3 ">
+                      {errors.firstName.message.toString()}
+                    </small>
+                  )}
+                  <Input
                     id="email"
                     label="Email Address"
                     disabled={isLoading}
@@ -151,12 +171,39 @@ const Contact: FC = () => {
                       {errors.email.message.toString()}
                     </small>
                   )}
-
+                  <Input
+                    id="telephone"
+                    label="Phone number"
+                    disabled={isLoading}
+                    register={register}
+                    errors={errors}
+                    required
+                    validate={handlePhoneNumberValidation}
+                  />
+                  {errors.phoneNumber?.message && (
+                    <small className="text-rose-500 px-3">
+                      {errors.phoneNumber.message.toString()}
+                    </small>
+                  )}
+                  <Input
+                    id="reference"
+                    label="Reference"
+                    disabled={isLoading}
+                    register={register}
+                    errors={errors}
+                    required
+                    // validate={handlePhoneNumberValidation}
+                  />
+                  {errors.phoneNumber?.message && (
+                    <small className="text-rose-500 px-3">
+                      {errors.phoneNumber.message.toString()}
+                    </small>
+                  )}
                   <ContactTextArea
                     id={"message"}
                     label={""}
                     defaultValue={""}
-                    rows={10}
+                    rows={5}
                     placeholder="Type your message here!"
                     register={register}
                     errors={errors}

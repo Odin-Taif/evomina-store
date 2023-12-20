@@ -1,7 +1,7 @@
 "use client";
 import React, { Dispatch, createContext, useReducer } from "react";
 type StateType = {
-  count: number;
+  cartproducts: number;
   selectedCategory: string[];
   price: {
     max: 1000;
@@ -10,7 +10,7 @@ type StateType = {
 };
 
 const initialState: StateType = {
-  count: 0,
+  cartproducts: 0,
   selectedCategory: [
     "All Products",
     "Accessories",
@@ -29,6 +29,7 @@ const initialState: StateType = {
 };
 
 export const actionType = {
+  ADD_CART_PRODUCT: "ADD_CART_PRODUCT",
   SET_CATEGORY: "SET_CATEGORY",
   SET_PRICE: "SET_PRICE",
 };
@@ -43,6 +44,11 @@ const reducer = (state: StateType, action: any) => {
       return {
         ...state,
         price: action.price,
+      };
+    case actionType.ADD_CART_PRODUCT:
+      return {
+        ...state,
+        cartproducts: action.cartproducts,
       };
     default:
       return state;

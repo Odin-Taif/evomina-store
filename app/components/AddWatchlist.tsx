@@ -1,34 +1,30 @@
 "use client";
-import React, { useContext } from "react";
+import React from "react";
 import axios from "axios";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
-import { MdOutlineAddShoppingCart } from "react-icons/md";
-import useLoginModel from "../hook/useLoginModal";
-import { CounterContext } from "../context/counter.context";
+import { FaRegHeart } from "react-icons/fa";
+import useLoginModel from "@/app/hook/useLoginModal";
 
 type Props = {
   productId?: number;
 };
 
-const AddCart = ({ productId }: Props) => {
+const AddWatchList = ({ productId }: Props) => {
   const { data: session } = useSession();
-  // const { state, dispatch } = useContext(CounterContext);
-  // console.log(state.cartproducts);
   const id = session?.user.id;
   const router = useRouter();
   const loginModel = useLoginModel();
-  const handleCart = async () => {
+  const handleWatchList = async () => {
     if (session?.user) {
       try {
         const response = await axios
-          .post("/api/cart", {
+          .post("/api/watchlist", {
             productId: productId,
             userId: id,
           })
           .then((response) => {
             // router.push("/cart");
-
             console.log(response.data);
           });
       } catch (error) {
@@ -40,14 +36,14 @@ const AddCart = ({ productId }: Props) => {
   };
   return (
     <div
-      onClick={handleCart}
+      onClick={handleWatchList}
       className="flex items-center space-x-4 bg-amber-400 text-gray-100 p-2 rounded-full cursor-pointer hover:bg-amber-500"
     >
       <span>
-        <MdOutlineAddShoppingCart size={20} />
+        <FaRegHeart size={15} />
       </span>
     </div>
   );
 };
 
-export default AddCart;
+export default AddWatchList;

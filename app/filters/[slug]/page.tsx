@@ -9,6 +9,7 @@ import AddCart from "@/app/components/AddCart";
 import OurMission from "@/app/components/reusableComponents/OurMission";
 import ContactSection from "@/app/components/reusableComponents/ContactSection";
 import NewsLetter from "@/app/components/Home/NewLetter";
+import FilteredItems from "../filteredItems";
 
 // Define a type for the expected API response
 interface ApiResponse {
@@ -24,6 +25,11 @@ const Page = ({ params }: { params: { slug: string } }) => {
     decodedSlug,
   ]);
   const [response, setResponse] = useState<ApiResponse>({ products: [] });
+  const [loading, setLoading] = useState<boolean>(true);
+  const [price, setPrice] = useState({
+    min: 0,
+    max: 1000,
+  });
   const allCategories = [
     "All Products",
     "Accessories",
@@ -37,85 +43,69 @@ const Page = ({ params }: { params: { slug: string } }) => {
   ];
 
   useEffect(() => {
-    const fetchdata = async () => {
+    const fetchData = async () => {
       try {
-        const response = await axios
-          .get("/api/filterproduct", {
-            params: {
-              categories:
-                selectedCategories[0] == "All Products"
-                  ? allCategories
-                  : selectedCategories,
+        setLoading(true);
+        const response = await axios.get("/api/filterproduct", {
+          params: {
+            categories:
+              selectedCategories[0] === "All Products"
+                ? allCategories
+                : selectedCategories,
+            price: {
+              min: price.min,
+              max: price.max,
             },
-            headers: {
-              "Content-Type": "application/json",
-            },
-          })
-          .then((response) => {
-            // console.log("response", response.data);
-            setResponse(response.data);
-          });
-        // console.log(response);
+          },
+          headers: {
+            "Content-Type": "application/json",
+          },
+        });
+
+        setResponse(response.data);
       } catch (error) {
         console.log("error", error);
+      } finally {
+        setLoading(false);
       }
     };
-    fetchdata();
-  }, [selectedCategories]);
+
+    fetchData();
+  }, [selectedCategories, price]);
 
   return (
     <>
+      <div className="md:hidden">
+        <ResponsiveDrawer
+          selectedCategories={selectedCategories}
+          setSelectedCategories={setSelectedCategories}
+          price={price}
+          setPrice={setPrice}
+        />
+      </div>
       <div className="px-5 max-w-[1280px] mx-auto">
-        <div className="md:hidden">
-          <ResponsiveDrawer
-            selectedCategories={selectedCategories}
-            setSelectedCategories={setSelectedCategories}
-          />
-        </div>
-        <hr />
         <div className="flex">
           <div className="md:w-[250px] border-l-[0.5px] border-r-[0.5px] w-0 max-md:invisible">
             <Filter
               selectedCategories={selectedCategories}
               setSelectedCategories={setSelectedCategories}
+              price={price}
+              setPrice={setPrice}
             />
           </div>
           <div className="mx-auto px-auto md:px-4">
             <div className="grid lg:grid-cols-4 sm:grid-cols-2 grid-cols-1 md:gap-5 gap-5">
-              {response && response.products && response.products.length > 0 ? (
-                response.products.map((product: any) => (
-                  <div key={product.id}>
-                    <Link href={`/dashboard/${product.id}`}>
-                      <div className="relative rounded-lg border border-amber-300 ">
-                        <img
-                          src={product.images.split(",")[0]}
-                          className="w-[200px] h-[200px] object-cover object-top rounded-lg"
-                          alt=""
-                        />
-                      </div>
-                      <div className="flex flex-col items-left justify-between px-2 mt-2">
-                        <div>
-                          <h1 className="text-[14px] font-medium max-w-[150px] whitespace-nowrap overflow-hidden">
-                            {product.title}
-                          </h1>
-                          <p className="text-[13px] opacity-60">
-                            {product.store}
-                          </p>
-                        </div>
-                        <span className="font-medium w-fit px-2 bg-gray-100 rounded-lg">
-                          ${product.price}.00
-                        </span>
-                      </div>
-                    </Link>
-                    <div className="relative">
-                      <span className="absolute bottom-0 right-0 w-fit">
-                        <AddCart productId={product.id} />
-                      </span>
-                    </div>
-                  </div>
-                ))
+              {loading ? (
+                <div>loaindg...</div>
+              ) : response &&
+                response.products &&
+                response.products.length > 0 ? (
+                <FilteredItems products={response.products} />
               ) : (
-                <p>No products found</p>
+                <div className="mx-auto px-auto md:px-4">
+                  <img src="/noproduct.webp" alt="" />
+                  <span> No Products Found</span>
+                </div>
               )}
             </div>
           </div>

@@ -4,7 +4,7 @@ export const isValidEmail = (email: string): string | undefined => {
   const regex = /^[A-Za-z0-9+_.-]+@(.+)$/;
   // If the email is not null and passes the regex test, it is valid
   if (email !== null && regex.test(email)) {
-    return undefined;  // Return undefined to indicate that the email is valid
+    return undefined; // Return undefined to indicate that the email is valid
   }
   // If the email is invalid, return an error message
   return "Email is not valid";
@@ -37,7 +37,7 @@ export const isValidPassword = (password: string): string | undefined => {
   if (!specialCharPattern.test(password)) {
     return 'password needs to contain at least one special character like: "!@#$%^&*()-_+"';
   }
-  return undefined;  // Return undefined to indicate that the password is valid
+  return undefined; // Return undefined to indicate that the password is valid
 };
 
 // Function to validate a name
@@ -53,7 +53,7 @@ export const isValidName = (name: string): string | undefined => {
     return "Name contains invalid characters";
   }
 
-  return undefined;  // Return undefined to indicate that the name is valid
+  return undefined; // Return undefined to indicate that the name is valid
 };
 
 // Function to validate a phone number
@@ -69,5 +69,5 @@ export const isValidPhoneNumber = (phoneNumber: string): string | undefined => {
     return "Phone number contains invalid characters";
   }
 
-  return undefined;  // Return undefined to indicate that the phone number is valid
+  return undefined; // Return undefined to indicate that the phone number is valid
 };

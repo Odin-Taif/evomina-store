@@ -18,6 +18,8 @@ interface Props {
   window?: () => Window;
   selectedCategories: any;
   setSelectedCategories: any;
+  price: any;
+  setPrice: any;
 }
 
 export default function ResponsiveDrawer(props: Props) {
@@ -34,6 +36,8 @@ export default function ResponsiveDrawer(props: Props) {
         <Filter
           selectedCategories={props.selectedCategories}
           setSelectedCategories={props.setSelectedCategories}
+          price={props.price}
+          setPrice={props.setPrice}
         />
       </List>
     </div>

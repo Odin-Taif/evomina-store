@@ -24,7 +24,6 @@ const AllCartProduct = async (props: Props) => {
   );
 
   const cartProducts = await Promise.all(cartProdcutPromises);
-
   const allIds = allcartproduct.map((item) => item.productId);
 
   if (cartProducts.length === 0) {

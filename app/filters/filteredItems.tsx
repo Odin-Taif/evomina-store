@@ -2,8 +2,10 @@
 import React, { useContext, useEffect, useState } from "react";
 import Link from "next/link";
 import { CounterContext } from "@/app/context/counter.context";
-import AddCart from "../AddCart";
-import Loader from "../reusableComponents/Loader";
+import AddCart from "../components/AddCart";
+import AddWatchList from "../components/AddWatchlist";
+// import AddCart from "../AddCart";
+// import Loader from "../reusableComponents/Loader";
 
 type Products = {
   id: number;
@@ -21,7 +23,7 @@ type Props = {
 
 const FilteredItems = ({ products }: Props) => {
   return (
-    <div className="grid lg:grid-cols-4 sm:grid-cols-2 grid-cols-1 md:gap-5 gap-5 ">
+    <>
       {products.map((product) => (
         <div key={product.id}>
           <Link href={`/dashboard/${product.id}`}>
@@ -48,10 +50,13 @@ const FilteredItems = ({ products }: Props) => {
             <span className="absolute bottom-0 right-0 w-fit">
               <AddCart productId={product.id} />
             </span>
+            <span className="absolute bottom-0 right-10 w-fit">
+              <AddWatchList productId={product.id} />
+            </span>
           </div>
         </div>
       ))}
-    </div>
+    </>
   );
 };
 

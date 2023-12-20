@@ -36,7 +36,7 @@ function Input({
     setPasswordShown(!passwordShown);
   };
   return (
-    <div className="w-full relative">
+    <div className="w-full relative my-2">
       <input
         id={id}
         disabled={disabled}

@@ -15,6 +15,7 @@ export async function GET(request: Request) {
         OR: categories.map((category) => ({
           category: { contains: category },
         })),
+        price: { gte: minPrice, lte: maxPrice },
       },
     });
     // console.log(products);
