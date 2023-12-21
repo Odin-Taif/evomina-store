@@ -28,7 +28,7 @@ const Allpurchased = async ({ userId }: Props) => {
       <div className="relative flex items-center justify-center">
         <img src="empty.png" alt="" />
         <h1 className="absolute top-[80%] text-2xl text-purple-600">
-          Empty Cart
+          No purchased yet
         </h1>
       </div>
     );

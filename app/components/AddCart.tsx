@@ -1,22 +1,18 @@
 "use client";
-import React, { useContext } from "react";
 import axios from "axios";
 import { useSession } from "next-auth/react";
-import { useRouter } from "next/navigation";
 import { MdOutlineAddShoppingCart } from "react-icons/md";
 import useLoginModel from "../hook/useLoginModal";
-import { CounterContext } from "../context/counter.context";
+import { useShoppingCart } from "../context/shopincartConext";
 
 type Props = {
   productId?: number;
 };
 
 const AddCart = ({ productId }: Props) => {
+  const { increaseCartQuantity } = useShoppingCart();
   const { data: session } = useSession();
-  // const { state, dispatch } = useContext(CounterContext);
-  // console.log(state.cartproducts);
   const id = session?.user.id;
-  const router = useRouter();
   const loginModel = useLoginModel();
   const handleCart = async () => {
     if (session?.user) {
@@ -27,8 +23,7 @@ const AddCart = ({ productId }: Props) => {
             userId: id,
           })
           .then((response) => {
-            // router.push("/cart");
-
+            increaseCartQuantity(id);
             console.log(response.data);
           });
       } catch (error) {

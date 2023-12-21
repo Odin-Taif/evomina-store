@@ -5,7 +5,7 @@ import DeleteCart from "./DeleteCart";
 import Button from "./Button";
 
 type Props = {
-  userId?: number;
+  userId: number;
 };
 
 const AllWatchListProduct = async (props: Props) => {
@@ -57,7 +57,7 @@ const AllWatchListProduct = async (props: Props) => {
               Store: {watchlistProduct?.store}
             </h3>
             <DeleteCart
-              productId={watchlistProduct?.id}
+              productId={watchlistProduct?.id ?? 0}
               userId={props.userId}
             />
           </div>

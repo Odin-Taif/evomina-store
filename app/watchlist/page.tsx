@@ -11,8 +11,6 @@ const Cart = async (props: Props) => {
   return (
     <>
       <div className="max-w-[1280px] mx-auto px-5">
-        {/* <AllCartProduct userId={session?.user?.id} /> */}
-        {/* <hr className="mt-10 mb-10" /> */}
         <AllWatchListProduct userId={session?.user?.id} />
       </div>
     </>

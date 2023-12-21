@@ -5,7 +5,7 @@ import DeleteCart from "./DeleteCart";
 import Button from "./Button";
 
 type Props = {
-  userId?: number;
+  userId: number;
 };
 
 const AllCartProduct = async (props: Props) => {
@@ -55,7 +55,10 @@ const AllCartProduct = async (props: Props) => {
             <h3 className="text-sm text-neutral-600 mb-2">
               Store: {cartProduct?.store}
             </h3>
-            <DeleteCart productId={cartProduct?.id} userId={props.userId} />
+            <DeleteCart
+              productId={cartProduct?.id ?? 0}
+              userId={props.userId}
+            />
           </div>
           <Link href={`/dashboard/${cartProduct?.id}`}>
             <div>

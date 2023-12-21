@@ -8,6 +8,7 @@ import LoginModal from "./components/modals/LoginModal";
 import RegisterModal from "./components/modals/RegisterModal";
 import ToastContainerBar from "./components/ToastContainerBar";
 import { CounterContextProvider } from "./context/counter.context";
+import { ShoppingCartProvider } from "./context/shopincartConext";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
@@ -25,12 +26,14 @@ export default function RootLayout({
       <body className={inter.className}>
         <Provider>
           <CounterContextProvider>
-            <ToastContainerBar />
-            <LoginModal />
-            <RegisterModal />
-            <Navbar />
-            {children}
-            <Footer />
+            <ShoppingCartProvider>
+              <ToastContainerBar />
+              <LoginModal />
+              <RegisterModal />
+              <Navbar />
+              {children}
+              <Footer />
+            </ShoppingCartProvider>
           </CounterContextProvider>
         </Provider>
       </body>

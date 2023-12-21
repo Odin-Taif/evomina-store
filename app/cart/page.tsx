@@ -3,9 +3,7 @@ import { getServerSession } from "next-auth";
 import { options } from "@/app/api/auth/[...nextauth]/options";
 import AllCartProduct from "../components/AllCartProduct";
 import Allpurchased from "../components/Allpurchased";
-
 type Props = {};
-
 const Cart = async (props: Props) => {
   const session = await getServerSession(options);
   return (
