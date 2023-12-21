@@ -104,16 +104,7 @@ const Filter = ({
             >
               Gift sets
             </span>
-            <span
-              className={`py-3 px-5 hover:cursor-pointer hover:bg-amber-100 ${
-                selectedCategories.includes("Incense cones")
-                  ? "bg-amber-50"
-                  : ""
-              }`}
-              onClick={() => toggleCategory("Incense cones")}
-            >
-              Incense cones
-            </span>
+
             <span
               className={`py-3 px-5 hover:cursor-pointer hover:bg-amber-100 ${
                 selectedCategories.includes("Diffuser") ? "bg-amber-50" : ""
@@ -151,6 +142,26 @@ const Filter = ({
               onClick={() => toggleCategory("Incense burners")}
             >
               Incense burners
+            </span>
+            <span
+              className={`py-3 px-5 hover:cursor-pointer hover:bg-amber-100 ${
+                selectedCategories.includes("Incense sticks")
+                  ? "bg-amber-50"
+                  : ""
+              }`}
+              onClick={() => toggleCategory("Incense sticks")}
+            >
+              Incense sticks
+            </span>
+            <span
+              className={`py-3 px-5 hover:cursor-pointer hover:bg-amber-100 ${
+                selectedCategories.includes("Incense cones")
+                  ? "bg-amber-50"
+                  : ""
+              }`}
+              onClick={() => toggleCategory("Incense cones")}
+            >
+              Incense cones
             </span>
             <span
               className={`py-3 px-5 hover:cursor-pointer hover:bg-amber-100 ${

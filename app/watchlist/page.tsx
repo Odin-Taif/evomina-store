@@ -1,7 +1,7 @@
 import React from "react";
 import { getServerSession } from "next-auth";
 import { options } from "@/app/api/auth/[...nextauth]/options";
-import AllCartProduct from "../components/AllCartProduct";
+import AllCartProduct from "../cart/AllCartProduct";
 import AllWatchListProduct from "../components/AllWatchListProudts";
 
 type Props = {};
