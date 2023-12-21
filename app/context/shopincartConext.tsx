@@ -21,6 +21,7 @@ type ShoppingCartContext = {
   increaseCartQuantity: (id: number) => void;
   decreaseCartQuantity: (id: number) => void;
   removeFromCart: (id: number) => void;
+  // setCartitemsToprismaItems: (items: CartItem[]) => void;
   cartQuantity: number;
   cartItems: CartItem[];
 };
@@ -47,6 +48,27 @@ export function ShoppingCartProvider({ children }: ShoppingCartProviderProps) {
   function getItemQuantity(id: number) {
     return cartItems.find((item) => item.id === id)?.quantity || 0;
   }
+  // const setCartitemsToprismaItems = (items: CartItem[]) => {
+  //   setCartItems(items);
+  // };
+
+  // function setCartItemsToPrisma(items: CartItem[]) {
+  //   setCartItems((currItems) => {
+  //     if (currItems.find((item) => item.id === id) == null) {
+  //       return [...currItems, { id, quantity: 1 }];
+  //     } else {
+  //       return currItems.map((item) => {
+  //         if (item.id === id) {
+  //           return { ...item, quantity: item.quantity + 1 };
+  //         } else {
+  //           return item;
+  //         }
+  //       });
+  //     }
+  //   });
+
+  //   setCartItems((items) => {});
+  // }
   function increaseCartQuantity(id: number) {
     setCartItems((currItems) => {
       if (currItems.find((item) => item.id === id) == null) {
@@ -89,6 +111,7 @@ export function ShoppingCartProvider({ children }: ShoppingCartProviderProps) {
         getItemQuantity,
         increaseCartQuantity,
         decreaseCartQuantity,
+        // setCartitemsToprismaItems,
         removeFromCart,
         openCart,
         closeCart,

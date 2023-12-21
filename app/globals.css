@@ -1,3 +1,46 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  /* body {
+    @apply !scrollbar-thin !scrollbar-track-transparent !scrollbar-thumb-[#FF5A5F];
+  } */
+}
+
+* {
+  font-family: "Barlow", Helvetica, sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  outline: none;
+  text-decoration: none;
+  list-style: none;
+  /* -webkit-tap-highlight-color: transparent; */
+  font-weight: 300;
+  /* overflow-x: hidden; */
+}
+
+html,
+body {
+  max-width: 100%;
+  width: 100%;
+  margin: auto;
+  color: #000000;
+  /* overflow-x: hidden; */
+}
+h1,
+h2,
+h3,
+h4,
+h5 {
+}
+
+a {
+  color: #000000;
+  text-decoration: none;
+}
+
+ul {
+  list-style: none;
+}

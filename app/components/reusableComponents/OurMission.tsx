@@ -27,10 +27,8 @@ const OurMission: FunctionComponent = () => {
             treasures that we want to use. Our goal is to tap into the healing
             powers of nature and support you in your daily life with them.
           </p>
-          <span className="bg-amber-400 p-3 my-8 rounded hover:cursor-pointer hover:bg-amber-500 text-white">
-            <Link href="/">Find out more</Link>
-          </span>
         </div>
+
         <div className="relative md:col-span-1 col-span-4 h-80">
           <Image
             src="/homeLara.svg" // Image source
@@ -43,6 +41,9 @@ const OurMission: FunctionComponent = () => {
         {/* Div for the image with responsive sizing */}
       </section>
       {/* Horizontal rule for visual separation */}
+      <span className="bg-amber-400 p-3 rounded hover:cursor-pointer hover:bg-amber-500 text-white">
+        <Link href="/">Find out more</Link>
+      </span>
       <hr className="my-4" />
     </Container>
   );

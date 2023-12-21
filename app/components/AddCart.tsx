@@ -23,7 +23,7 @@ const AddCart = ({ productId }: Props) => {
             userId: id,
           })
           .then((response) => {
-            increaseCartQuantity(id);
+            increaseCartQuantity(productId ?? 0);
             console.log(response.data);
           });
       } catch (error) {

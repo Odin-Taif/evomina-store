@@ -39,11 +39,11 @@ const UserProfile = () => {
   const handelSignOut = () => {
     signOut()
       .then(() => {
+        router.push("/");
         // Showing a success toast message
         toast.success("you are logged out now!");
         // Refreshing the page to reflect the logout
-        router.push("/");
-        // router.refresh();
+        router.refresh();
       })
       .catch((err: any) => console.log(err)); // Logging any potential errors
   };

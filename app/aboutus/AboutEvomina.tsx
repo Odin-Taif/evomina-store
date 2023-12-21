@@ -48,7 +48,6 @@ const AboutEvomina: FunctionComponent = () => {
           </p>
         </div>
       </div>
-      {/* Horizontal rule for visual separation */}
       <hr className="my-4" />
     </div>
   );

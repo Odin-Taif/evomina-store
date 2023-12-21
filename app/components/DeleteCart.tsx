@@ -11,8 +11,14 @@ type Props = {
 };
 
 const DeleteCart = (props: Props) => {
-  const { decreaseCartQuantity, removeFromCart } = useShoppingCart();
+  const {
+    decreaseCartQuantity,
+    increaseCartQuantity,
+    removeFromCart,
+    getItemQuantity,
+  } = useShoppingCart();
   const router = useRouter();
+  const itemQuantity = getItemQuantity(props.productId);
   const handleDelete = async () => {
     try {
       await axios.delete("/api/cart", {
@@ -21,17 +27,36 @@ const DeleteCart = (props: Props) => {
           userId: props.userId,
         },
       });
-      decreaseCartQuantity(props.productId);
       removeFromCart(props.productId);
+      // removeFromCart(props.productId);
       router.refresh();
     } catch (error) {
       console.log(error);
     }
   };
   return (
-    <div className="cursor-pointer" onClick={handleDelete}>
-      <GoTrash className="text-red-500" size={20} />
-    </div>
+    <>
+      {/* <button
+        onClick={() => increaseCartQuantity(props.productId)}
+        className="text-black"
+      >
+        + add more
+        <span>{itemQuantity}</span>
+      </button>
+      <button
+        onClick={() => decreaseCartQuantity(props.productId)}
+        className="text-black"
+      >
+        - remove
+      </button> */}
+      <div
+        className="flex flex-row cursor-pointer mt-10 text-red-400"
+        onClick={handleDelete}
+      >
+        <GoTrash className="text-red-500 pt-2" size={20} />
+        <span className="underline">remove</span>
+      </div>
+    </>
   );
 };
 
