@@ -1,7 +1,7 @@
 import React from "react";
 import prisma from "@/app/prismadb";
 import Link from "next/link";
-import DeleteCart from "../components/DeleteCart";
+import DeleteCart from "./DeleteCart";
 import Button from "../components/Button";
 import IncreDecrementProducts from "./IncreDecrementProducts";
 

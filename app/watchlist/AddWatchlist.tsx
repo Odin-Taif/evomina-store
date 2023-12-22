@@ -5,6 +5,7 @@ import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { FaRegHeart } from "react-icons/fa";
 import useLoginModel from "@/app/hook/useLoginModal";
+import { useShoppingCart } from "../context/shopincartConext";
 
 type Props = {
   productId?: number;
@@ -12,6 +13,7 @@ type Props = {
 
 const AddWatchList = ({ productId }: Props) => {
   const { data: session } = useSession();
+  const { increaseWatchListQuantity } = useShoppingCart();
   const id = session?.user.id;
   const router = useRouter();
   const loginModel = useLoginModel();
@@ -24,7 +26,7 @@ const AddWatchList = ({ productId }: Props) => {
             userId: id,
           })
           .then((response) => {
-            // router.push("/cart");
+            increaseWatchListQuantity(productId ?? 0);
             console.log(response.data);
           });
       } catch (error) {

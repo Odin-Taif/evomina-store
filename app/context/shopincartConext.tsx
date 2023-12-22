@@ -1,9 +1,7 @@
 "use client";
 import { createContext, ReactNode, useContext, useState } from "react";
-// import { ShoppingCart } from "../components/ShoppingCart";
 import { useLocalStorage } from "../hook/useLocalStorage";
 import { ShoppingCart } from "../components/shopingCart/ShoppingCart";
-// import { useLocalStorage } from "../hooks/useLocalStorage"
 
 type ShoppingCartProviderProps = {
   children: ReactNode;
@@ -21,9 +19,13 @@ type ShoppingCartContext = {
   increaseCartQuantity: (id: number) => void;
   decreaseCartQuantity: (id: number) => void;
   removeFromCart: (id: number) => void;
-  // setCartitemsToprismaItems: (items: CartItem[]) => void;
+  increaseWatchListQuantity: (id: number) => void;
+  removeFromWatchList: (id: number) => void;
+  decreaseWatchlistQuantity: (id: number) => void;
   cartQuantity: number;
   cartItems: CartItem[];
+  watchlistQuantity: number;
+  watchlistItems: CartItem[];
 };
 
 const ShoppingCartContext = createContext({} as ShoppingCartContext);
@@ -37,8 +39,16 @@ export function ShoppingCartProvider({ children }: ShoppingCartProviderProps) {
     "shopping-cart",
     []
   );
+  const [watchlistItems, setWatchlistItems] = useLocalStorage<CartItem[]>(
+    "watchlist-cart",
+    []
+  );
 
   const cartQuantity = cartItems.reduce(
+    (quantity, item) => item.quantity + quantity,
+    0
+  );
+  const watchlistQuantity = watchlistItems.reduce(
     (quantity, item) => item.quantity + quantity,
     0
   );
@@ -48,27 +58,44 @@ export function ShoppingCartProvider({ children }: ShoppingCartProviderProps) {
   function getItemQuantity(id: number) {
     return cartItems.find((item) => item.id === id)?.quantity || 0;
   }
-  // const setCartitemsToprismaItems = (items: CartItem[]) => {
-  //   setCartItems(items);
-  // };
 
-  // function setCartItemsToPrisma(items: CartItem[]) {
-  //   setCartItems((currItems) => {
-  //     if (currItems.find((item) => item.id === id) == null) {
-  //       return [...currItems, { id, quantity: 1 }];
-  //     } else {
-  //       return currItems.map((item) => {
-  //         if (item.id === id) {
-  //           return { ...item, quantity: item.quantity + 1 };
-  //         } else {
-  //           return item;
-  //         }
-  //       });
-  //     }
-  //   });
+  function increaseWatchListQuantity(id: number) {
+    setWatchlistItems((currItems) => {
+      if (currItems.find((item) => item.id === id) == null) {
+        return [...currItems, { id, quantity: 1 }];
+      } else {
+        return currItems.map((item) => {
+          if (item.id === id) {
+            return { ...item, quantity: item.quantity + 1 };
+          } else {
+            return item;
+          }
+        });
+      }
+    });
+  }
 
-  //   setCartItems((items) => {});
-  // }
+  function decreaseWatchlistQuantity(id: number) {
+    setWatchlistItems((currItems) => {
+      if (currItems.find((item) => item.id === id)?.quantity === 1) {
+        return currItems.filter((item) => item.id !== id);
+      } else {
+        return currItems.map((item) => {
+          if (item.id === id) {
+            return { ...item, quantity: item.quantity - 1 };
+          } else {
+            return item;
+          }
+        });
+      }
+    });
+  }
+
+  function removeFromWatchList(id: number) {
+    setWatchlistItems((currItems) => {
+      return currItems.filter((item) => item.id !== id);
+    });
+  }
   function increaseCartQuantity(id: number) {
     setCartItems((currItems) => {
       if (currItems.find((item) => item.id === id) == null) {
@@ -111,12 +138,16 @@ export function ShoppingCartProvider({ children }: ShoppingCartProviderProps) {
         getItemQuantity,
         increaseCartQuantity,
         decreaseCartQuantity,
-        // setCartitemsToprismaItems,
+        increaseWatchListQuantity,
+        removeFromWatchList,
+        decreaseWatchlistQuantity,
         removeFromCart,
         openCart,
         closeCart,
         cartItems,
         cartQuantity,
+        watchlistQuantity,
+        watchlistItems,
       }}
     >
       {children}

@@ -3,7 +3,7 @@ import React, { useContext, useEffect, useState } from "react";
 import Link from "next/link";
 import { CounterContext } from "@/app/context/counter.context";
 import AddCart from "../components/AddCart";
-import AddWatchList from "../components/AddWatchlist";
+import AddWatchList from "../watchlist/AddWatchlist";
 import { useShoppingCart } from "../context/shopincartConext";
 // import AddCart from "../AddCart";
 // import Loader from "../reusableComponents/Loader";

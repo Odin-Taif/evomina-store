@@ -106,7 +106,17 @@ function LoginModal({}: Props) {
         subtitle="Login to your Account!"
         center
       />
-      {/* Input component for email */}
+      {/* Button for Google login */}
+      <div className="my-4">
+        <Button
+          outline
+          widthFull
+          label="Continue with Google"
+          icon={FcGoogle}
+          onClick={() => signIn("google")}
+        />
+      </div>
+
       <Input
         id="email"
         label="Email Address"
@@ -153,16 +163,8 @@ function LoginModal({}: Props) {
 
   // Content for the footer of the modal.
   const footerContent = (
-    <div className="flex flex-col gap-4 mt-3">
+    <div className="flex flex-col">
       <hr />
-      {/* Button for Google login */}
-      <Button
-        outline
-        widthFull
-        label="Continue with Google"
-        icon={FcGoogle}
-        onClick={() => signIn("google")}
-      />
       {/* Text and link to toggle to the SignUp modal */}
       <div className="text-neutral-500 text-center mt-4 font-light">
         <div>

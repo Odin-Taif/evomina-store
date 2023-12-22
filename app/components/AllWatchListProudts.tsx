@@ -1,8 +1,10 @@
 import React from "react";
 import prisma from "@/app/prismadb";
 import Link from "next/link";
-import DeleteCart from "./DeleteCart";
+import DeleteCart from "../cart/DeleteCart";
 import Button from "./Button";
+import DeleteWatchlist from "../watchlist/DeleteWatchList";
+import AddCart from "./AddCart";
 
 type Props = {
   userId: number;
@@ -32,7 +34,7 @@ const AllWatchListProduct = async (props: Props) => {
       <div className="relative flex items-center justify-center">
         <img src="empty.png" alt="" />
         <h1 className="absolute top-[80%] text-2xl text-amber-500">
-          Empty Cart
+          Empty Watch List!
         </h1>
       </div>
     );
@@ -56,7 +58,14 @@ const AllWatchListProduct = async (props: Props) => {
             <h3 className="text-sm text-neutral-600 mb-2">
               Store: {watchlistProduct?.store}
             </h3>
-            <DeleteCart
+            <div className="flex items-center space-x-2">
+              <AddCart productId={watchlistProduct?.id} />
+              <span className="font-medium w-fit px-2 bg-gray-100 rounded-lg">
+                Add To Cart
+              </span>
+            </div>
+
+            <DeleteWatchlist
               productId={watchlistProduct?.id ?? 0}
               userId={props.userId}
             />

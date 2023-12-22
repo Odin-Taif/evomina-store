@@ -1,21 +1,13 @@
 import Link from "next/link";
 import React, { useState } from "react";
 
-// "Accessories",
-//     "Gift sets",
-//     "Incense cones",
-//     "Diffuser",
-//     "Frankincense",
-//     "Essential oil",
-//     "Incense burners",
-//     "Incense sticks",
 export default function CategoryCollections() {
   return (
-    <div className="flex justify-center items-center bg-amber-50">
-      <div className="2xl:mx-auto 2xl:container py-6 w-full px-2 sm:px-2 xl:px-2 2xl:px-0">
+    <div className="flex justify-center items-center bg-white">
+      <div className="2xl:mx-auto 2xl:container py-6 w-full px-2 sm:px-2 xl:px-2 2xl:px-0 ">
         <div className="flex flex-col jusitfy-center items-center space-y-10">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 md:gap-x-8 w-full">
-            <div className="relative group flex justify-center items-center h-60 w-full border border-red-400">
+            <div className="relative group flex justify-center items-center h-60 w-full ">
               <img
                 className="object-center object-cover h-full w-full"
                 src="/accessories.webp"

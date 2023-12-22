@@ -16,7 +16,13 @@ type Props = {};
 
 const Navbar = (props: Props) => {
   const [showNav, setShowNav] = useState<boolean>(false);
-  const { openCart, cartQuantity, cartItems } = useShoppingCart();
+  const {
+    openCart,
+    cartQuantity,
+    watchlistQuantity,
+    watchlistItems,
+    cartItems,
+  } = useShoppingCart();
   // console.log(cartItems);
   // console.log(cartQuantity, "this quantity");
   const loginModel = useLoginModel();
@@ -86,14 +92,24 @@ const Navbar = (props: Props) => {
           <SearchBar />
           {session?.user ? (
             <Link href="/watchlist">
-              <div className="p-2 bg-gray-100 rounded-full">
-                <FaRegHeart size={20} />
+              <div className="relative">
+                <div className="p-2 bg-gray-100 rounded-full">
+                  <FaRegHeart size={20} />
+                </div>
+                <span className="absolute top-0 right-0 -mt-1 -mr-1 text-black rounded-full p-1 text-xs">
+                  {watchlistItems.length}
+                </span>
               </div>
             </Link>
           ) : (
             <div onClick={loginModel.onOpen}>
-              <div className="p-2 bg-gray-100 rounded-full hover:cursor-pointer">
-                <FaRegHeart size={20} />
+              <div className="relative">
+                <div className="p-2 bg-gray-100 rounded-full">
+                  <FaRegHeart size={20} />
+                </div>
+                <span className="absolute top-0 right-0 -mt-1 -mr-1 text-black rounded-full p-1 text-xs">
+                  0
+                </span>
               </div>
             </div>
           )}

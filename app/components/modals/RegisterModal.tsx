@@ -16,6 +16,8 @@ import {
 } from "@/utils/AuthValidation";
 import useRegisterModal from "@/app/hook/useRegisterModal";
 import useLoginModel from "@/app/hook/useLoginModal";
+import Button from "../reusableComponents/Button";
+import { signIn } from "next-auth/react";
 type Props = {};
 function RegisterModal({}: Props) {
   const registerModel = useRegisterModal(); // Custom hook to manage the state of the registration modal
@@ -74,12 +76,22 @@ function RegisterModal({}: Props) {
   }, [loginModel, registerModel]);
 
   const bodyContent = (
-    <div className="flex flex-col gap-4">
+    <div className="flex flex-col gap-2">
       <Heading
         title="Welcome to Evomina"
         subtitle="Create an Account!"
         center
       />
+      {/* Button for Google login */}
+      <div className="my-4">
+        <Button
+          outline
+          widthFull
+          label="Continue with Google"
+          icon={FcGoogle}
+          onClick={() => signIn("google")}
+        />
+      </div>
       <Input
         id="email"
         label="Email Address"
@@ -129,7 +141,7 @@ function RegisterModal({}: Props) {
   );
 
   const footerContent = (
-    <div className="flex flex-col gap-4 mt-3">
+    <div className="flex flex-col">
       <hr />
       {/* <Button
         outline
@@ -138,7 +150,7 @@ function RegisterModal({}: Props) {
         onClick={() => signIn("google")}
       /> */}
 
-      <div className="text-neutral-500 text-center mt-4 font-light">
+      <div className="text-neutral-500 text-center font-light">
         <div>
           Already have an account?{" "}
           <span
