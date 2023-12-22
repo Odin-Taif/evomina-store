@@ -9,10 +9,11 @@ export default async function Home() {
   return (
     <>
       {/* <Header /> */}
-      <Banner />
+
       <div className="max-w-[1280px] mx-auto">
         <CategoryCollections />
         <hr className="my-4" />
+        <Banner />
         <OurMission />
         <AboutEvomina />
         <ContactSection />

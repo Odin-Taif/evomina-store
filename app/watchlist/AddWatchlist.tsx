@@ -9,13 +9,13 @@ import { useShoppingCart } from "../context/shopincartConext";
 
 type Props = {
   productId?: number;
+  lable: boolean;
 };
 
-const AddWatchList = ({ productId }: Props) => {
+const AddWatchList = ({ productId, lable }: Props) => {
   const { data: session } = useSession();
   const { increaseWatchListQuantity } = useShoppingCart();
   const id = session?.user.id;
-  const router = useRouter();
   const loginModel = useLoginModel();
   const handleWatchList = async () => {
     if (session?.user) {
@@ -41,8 +41,9 @@ const AddWatchList = ({ productId }: Props) => {
       onClick={handleWatchList}
       className="flex items-center space-x-4 bg-amber-400 text-gray-100 p-2 rounded-full cursor-pointer hover:bg-amber-500"
     >
-      <span>
+      <span className="flex justify-between gap-1 text-white text-sm">
         <FaRegHeart size={15} />
+        {lable && "Add to favorits"}
       </span>
     </div>
   );

@@ -4,6 +4,7 @@ import Link from "next/link";
 import DeleteCart from "./DeleteCart";
 import Button from "../components/Button";
 import IncreDecrementProducts from "./IncreDecrementProducts";
+import AddWatchList from "../watchlist/AddWatchlist";
 
 type Props = {
   userId: number;
@@ -41,7 +42,7 @@ const AllCartProduct = async (props: Props) => {
     <div className="">
       {cartProducts.map((cartProduct) => (
         <div
-          className="md:flex items-center mt-14 border-t border-gray-200"
+          className="md:flex items-center mt-5 border-t border-gray-200"
           key={cartProduct?.id}
         >
           <div className="w-4/4 border border-amber-50">
@@ -66,20 +67,20 @@ const AllCartProduct = async (props: Props) => {
             <p className="w-96 text-xs leading-3 text-gray-600">
               Category: {cartProduct?.category}
             </p>
-            <DeleteCart
-              productId={cartProduct?.id ?? 0}
-              userId={props.userId}
-            />
+
             <div className="flex items-center justify-between pt-5 pr-6">
               <div className="flex itemms-center">
-                <p className="text-xs leading-3 underline text-gray-800 cursor-pointer">
-                  Add to favorites
-                </p>
+                <AddWatchList productId={cartProduct?.id} lable />
               </div>
+
               <p className="text-base font-black leading-none text-gray-800">
                 {cartProduct?.price}€
               </p>
             </div>
+            <DeleteCart
+              productId={cartProduct?.id ?? 0}
+              userId={props.userId}
+            />
           </div>
         </div>
       ))}

@@ -11,12 +11,7 @@ type Props = {
 };
 
 const DeleteCart = (props: Props) => {
-  const {
-    decreaseCartQuantity,
-    increaseCartQuantity,
-    removeFromCart,
-    getItemQuantity,
-  } = useShoppingCart();
+  const { removeFromCart, getItemQuantity } = useShoppingCart();
   const router = useRouter();
   const itemQuantity = getItemQuantity(props.productId);
   const handleDelete = async () => {
@@ -36,24 +31,11 @@ const DeleteCart = (props: Props) => {
   };
   return (
     <>
-      {/* <button
-        onClick={() => increaseCartQuantity(props.productId)}
-        className="text-black"
-      >
-        + add more
-        <span>{itemQuantity}</span>
-      </button>
-      <button
-        onClick={() => decreaseCartQuantity(props.productId)}
-        className="text-black"
-      >
-        - remove
-      </button> */}
       <div
-        className="flex flex-row cursor-pointer mt-10 text-red-400"
+        className="flex flex-row cursor-pointer mt-4 text-red-400"
         onClick={handleDelete}
       >
-        <GoTrash className="text-red-500 pt-2" size={20} />
+        <GoTrash className="text-red-500 pt-2" size={25} />
         <span className="underline">remove</span>
       </div>
     </>

@@ -4,6 +4,7 @@ import { options } from "@/app/api/auth/[...nextauth]/options";
 import AllCartProduct from "./AllCartProduct";
 import Allpurchased from "./Allpurchased";
 import Container from "../components/reusableComponents/Container";
+import Heading from "../components/reusableComponents/Heading";
 type Props = {};
 const Cart = async (props: Props) => {
   const session = await getServerSession(options);
@@ -11,10 +12,11 @@ const Cart = async (props: Props) => {
     <>
       <div className="max-w-[1280px] mx-auto px-5">
         <Container>
+          <Heading title="Cart" />
           <AllCartProduct userId={session?.user?.id} />
         </Container>
-        <hr className="mt-10 mb-10" />
-        <Allpurchased userId={session?.user?.id} />
+        {/* <hr className="mt-10 mb-10" />
+        <Allpurchased userId={session?.user?.id} /> */}
       </div>
     </>
   );
