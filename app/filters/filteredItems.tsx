@@ -52,7 +52,7 @@ const FilteredItems = ({ products }: Props) => {
               <AddCart productId={product.id} />
             </span>
             <span className="absolute bottom-0 right-10 w-fit">
-              <AddWatchList productId={product.id} />
+              <AddWatchList productId={product.id} lable={false} />
             </span>
           </div>
         </div>
