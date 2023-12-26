@@ -25,6 +25,7 @@ const Navbar = (props: Props) => {
   } = useShoppingCart();
   // console.log(cartItems);
   // console.log(cartQuantity, "this quantity");
+  // console.log(watchlistQuantity, "this quantitywatchlist");
   const loginModel = useLoginModel();
   const { data: session } = useSession();
   useEffect(() => {
@@ -97,7 +98,7 @@ const Navbar = (props: Props) => {
                   <FaRegHeart size={20} />
                 </div>
                 <span className="absolute top-0 right-0 -mt-1 -mr-1 text-black rounded-full p-1 text-xs">
-                  {watchlistItems.length}
+                  {watchlistQuantity}
                 </span>
               </div>
             </Link>
@@ -121,7 +122,7 @@ const Navbar = (props: Props) => {
                   <CiShoppingCart size={20} />
                 </div>
                 <span className="absolute top-0 right-0 -mt-1 -mr-1 text-black rounded-full p-1 text-xs">
-                  {cartItems.length}
+                  {cartQuantity}
                 </span>
               </div>
             </Link>
@@ -157,7 +158,18 @@ const Navbar = (props: Props) => {
       >
         <ul className="flex flex-col text-[15px] opacity-75 px-2">
           <li>
-            <a href="/" className="py-3 inline-block w-full ">
+            <a
+              href="/"
+              className="py-3 inline-block w-full hover:text-yellow-600"
+            >
+              Home
+            </a>
+          </li>
+          <li>
+            <a
+              href="/filters/All Products"
+              className="py-3 inline-block w-full "
+            >
               Shop
             </a>
           </li>

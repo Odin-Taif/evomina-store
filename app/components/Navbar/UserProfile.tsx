@@ -5,7 +5,7 @@ import { Fragment } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { Menu, Transition } from "@headlessui/react";
-import { useSession, signOut, signIn } from "next-auth/react";
+import { useSession, signOut } from "next-auth/react";
 import { BiLogIn } from "react-icons/bi";
 import { UserIcon } from "@heroicons/react/24/outline";
 import { IconType } from "react-icons";
@@ -31,10 +31,10 @@ const UserProfile = () => {
   // Extracting the user object from the session
   const user = session?.user;
   // Boolean to check if the user data is still loading
-  const isLoadingUser = status === "loading";
+  // const isLoadingUser = status === "loading";
   // Custom hooks to handle opening and closing of login and register modals
   const loginModel = useLoginModel();
-  const registerModel = useRegisterModal();
+  // const registerModel = useRegisterModal();
   // Function to handle the sign-out process
   const handelSignOut = () => {
     signOut()

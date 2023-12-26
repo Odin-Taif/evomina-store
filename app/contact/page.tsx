@@ -64,7 +64,7 @@ const Contact: FC = () => {
   return (
     <>
       <Container>
-        <section className="bg-white py-20 lg:py-[120px] overflow-hidden relative z-1">
+        <section className="bg-white py-10 lg:py-[120px] overflow-hidden relative z-1">
           <div className="container">
             <div className="flex flex-wrap -mx-4 lg:justify-between">
               <div className="w-full px-4 lg:w-1/2 xl:w-6/12">

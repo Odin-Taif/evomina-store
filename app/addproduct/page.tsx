@@ -9,7 +9,10 @@ const AssistentPage = async () => {
   // Attempting to retrieve the current user's session on the server-side
   const currentUser = await getServerSession(options);
   // If there is no current user session, meaning the user is not authenticated
-  if (currentUser?.user.email !== "mjd.reklam@gmail.com") {
+  if (
+    currentUser?.user.email !== "mjd.reklam@gmail.com" &&
+    currentUser?.user.email !== "info@evomina.com"
+  ) {
     // Return a message prompting the user to log in, wrapped in ClientOnly to ensure it renders on the client-side
     return (
       <ClientOnly>

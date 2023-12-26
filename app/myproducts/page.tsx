@@ -5,17 +5,33 @@ import Link from "next/link";
 import prisma from "@/app/prismadb";
 import { AiTwotoneEdit } from "react-icons/ai";
 import DeleteProduct from "../components/DeleteProduct";
+import ClientOnly from "../components/ClientOnly";
+import EmptyState from "../components/EmptyState";
 
 type Props = {};
 
 const page = async (props: Props) => {
-  const session = await getServerSession(options);
-
+  const currentUser = await getServerSession(options);
   const allmyproduct = await prisma.product.findMany({
     where: {
-      userId: session?.user.id,
+      userId: currentUser?.user.id,
     },
   });
+  if (
+    currentUser?.user.email !== "mjd.reklam@gmail.com" &&
+    currentUser?.user.email !== "info@evomina.com"
+  ) {
+    // Return a message prompting the user to log in, wrapped in ClientOnly to ensure it renders on the client-side
+    return (
+      <ClientOnly>
+        <EmptyState
+          title="Unauthorized!"
+          subtitle="Please login first as an admin!"
+          showReset
+        />
+      </ClientOnly>
+    );
+  }
   if (allmyproduct.length === 0) {
     return (
       <div className="relative flex items-center justify-center">
@@ -50,7 +66,7 @@ const page = async (props: Props) => {
                 />
               </div>
             </Link>
-            {session?.user.id === product.userId && (
+            {currentUser?.user.id === product.userId && (
               <Link
                 className="absolute top-0 right-0"
                 href={`/edit/${product.id}`}

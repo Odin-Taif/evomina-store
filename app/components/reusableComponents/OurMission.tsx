@@ -41,9 +41,9 @@ const OurMission: FunctionComponent = () => {
         {/* Div for the image with responsive sizing */}
       </section>
       {/* Horizontal rule for visual separation */}
-      <span className="bg-amber-400 p-3 rounded hover:cursor-pointer hover:bg-amber-500 text-white">
+      {/* <span className="bg-amber-400 p-3 rounded hover:cursor-pointer hover:bg-amber-500 text-white">
         <Link href="/">Find out more</Link>
-      </span>
+      </span> */}
       <hr className="my-4" />
     </Container>
   );
