@@ -1,11 +1,10 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import Link from "next/link";
+
 import Filter from "../Filter";
 // import { useParams, useSearchParams } from "next/navigation";
 import ResponsiveDrawer from "@/app/components/container/FilterSearchDrawer";
-import AddCart from "@/app/components/AddCart";
 import OurMission from "@/app/components/reusableComponents/OurMission";
 import ContactSection from "@/app/components/reusableComponents/ContactSection";
 import NewsLetter from "@/app/components/Home/NewLetter";
@@ -103,8 +102,8 @@ const Page = ({ params }: { params: { slug: string } }) => {
                 <FilteredItems products={response.products} />
               ) : (
                 <div className="mx-auto px-auto md:px-4">
-                  <img src="/noproduct.webp" alt="" />
-                  <span> No Products Found</span>
+                  <img src="/noproduct.webp" alt="No Products Found" />
+                  <span className="items-center"> No Products Found</span>
                 </div>
               )}
             </div>

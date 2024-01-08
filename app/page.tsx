@@ -11,9 +11,9 @@ export default async function Home() {
       {/* <Header /> */}
 
       <div className="max-w-[1280px] mx-auto">
+        <Banner />
         <CategoryCollections />
         <hr className="my-4" />
-        <Banner />
         <OurMission />
         <AboutEvomina />
         <ContactSection />

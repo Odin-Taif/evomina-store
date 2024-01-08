@@ -13,8 +13,6 @@ const OurMission: FunctionComponent = () => {
   return (
     // Container component for consistent styling
     <Container>
-      {/* Heading component to display the title */}
-      {/* Section for the main content, with responsive design using flexbox */}
       <section className="grid grid-cols-4 mx-auto h-fit gap-3">
         {/* Div for the text content with styling and responsive design */}
         <div className="md:col-span-3 col-span-4 rounded-md text-black text-left">
@@ -27,6 +25,13 @@ const OurMission: FunctionComponent = () => {
             treasures that we want to use. Our goal is to tap into the healing
             powers of nature and support you in your daily life with them.
           </p>
+          <div className="flex">
+            <Link href="/aboutus">
+              <span className="flex py align-items-center border-b-2 border-black">
+                <p className="mr-3">Explore more</p>
+              </span>
+            </Link>
+          </div>
         </div>
 
         <div className="relative md:col-span-1 col-span-4 h-80">
@@ -40,14 +45,9 @@ const OurMission: FunctionComponent = () => {
         </div>
         {/* Div for the image with responsive sizing */}
       </section>
-      {/* Horizontal rule for visual separation */}
-      {/* <span className="bg-amber-400 p-3 rounded hover:cursor-pointer hover:bg-amber-500 text-white">
-        <Link href="/">Find out more</Link>
-      </span> */}
       <hr className="my-4" />
     </Container>
   );
 };
 
-// Exporting the component for use in other parts of the application
 export default OurMission;

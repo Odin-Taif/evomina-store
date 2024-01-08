@@ -9,23 +9,15 @@ import { useSession } from "next-auth/react";
 import Logo from "./Logo";
 import UserProfile from "./UserProfile";
 import useLoginModel from "@/app/hook/useLoginModal";
-
 import axios from "axios";
 import { useShoppingCart } from "@/app/context/shopincartConext";
 type Props = {};
 
 const Navbar = (props: Props) => {
   const [showNav, setShowNav] = useState<boolean>(false);
-  const {
-    openCart,
-    cartQuantity,
-    watchlistQuantity,
-    watchlistItems,
-    cartItems,
-  } = useShoppingCart();
-  // console.log(cartItems);
-  // console.log(cartQuantity, "this quantity");
-  // console.log(watchlistQuantity, "this quantitywatchlist");
+  const { openCart, cartQuantity, watchlistQuantity, cartItems } =
+    useShoppingCart();
+
   const loginModel = useLoginModel();
   const { data: session } = useSession();
   useEffect(() => {
@@ -94,8 +86,8 @@ const Navbar = (props: Props) => {
           {session?.user ? (
             <Link href="/watchlist">
               <div className="relative">
-                <div className="p-2 bg-gray-100 rounded-full">
-                  <FaRegHeart size={20} />
+                <div className="p-2 bg-gray-100 rounded-full text-red-400">
+                  <FaRegHeart size={15} />
                 </div>
                 <span className="absolute top-0 right-0 -mt-1 -mr-1 text-black rounded-full p-1 text-xs">
                   {watchlistQuantity}
@@ -105,8 +97,8 @@ const Navbar = (props: Props) => {
           ) : (
             <div onClick={loginModel.onOpen}>
               <div className="relative">
-                <div className="p-2 bg-gray-100 rounded-full">
-                  <FaRegHeart size={20} />
+                <div className="p-2 bg-gray-100 rounded-full text-red-400">
+                  <FaRegHeart size={15} />
                 </div>
                 <span className="absolute top-0 right-0 -mt-1 -mr-1 text-black rounded-full p-1 text-xs">
                   0
@@ -118,7 +110,7 @@ const Navbar = (props: Props) => {
           {session?.user ? (
             <Link href="/cart">
               <div className="relative">
-                <div className="p-2 bg-gray-100 rounded-full">
+                <div className="p-2 bg-gray-100 rounded-full text-green-500">
                   <CiShoppingCart size={20} />
                 </div>
                 <span className="absolute top-0 right-0 -mt-1 -mr-1 text-black rounded-full p-1 text-xs">
@@ -129,7 +121,7 @@ const Navbar = (props: Props) => {
           ) : (
             <div onClick={loginModel.onOpen}>
               <div className="relative">
-                <div className="p-2 bg-gray-100 rounded-full">
+                <div className="p-2 bg-gray-100 rounded-full text-green-500">
                   <CiShoppingCart size={20} />
                 </div>
                 <span className="absolute top-0 right-0 -mt-1 -mr-1 text-black rounded-full p-1 text-xs">
@@ -160,7 +152,7 @@ const Navbar = (props: Props) => {
           <li>
             <a
               href="/"
-              className="py-3 inline-block w-full hover:text-yellow-600"
+              className="py-3 inline-block w-full font-bold hover:text-yellow-600"
             >
               Home
             </a>
@@ -168,7 +160,7 @@ const Navbar = (props: Props) => {
           <li>
             <a
               href="/filters/All Products"
-              className="py-3 inline-block w-full "
+              className="py-3 inline-block w-full font-bold hover:text-yellow-600"
             >
               Shop
             </a>
@@ -176,7 +168,7 @@ const Navbar = (props: Props) => {
           <li>
             <a
               href="/contact"
-              className="py-3 inline-block w-full hover:text-yellow-600"
+              className="py-3 inline-block w-full font-bold hover:text-yellow-600"
             >
               Contact
             </a>
@@ -185,7 +177,7 @@ const Navbar = (props: Props) => {
           <li>
             <a
               href="/aboutus"
-              className="py-3 inline-block w-full hover:text-yellow-600"
+              className="py-3 inline-block w-full font-bold hover:text-yellow-600"
             >
               About
             </a>

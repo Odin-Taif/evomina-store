@@ -15,7 +15,10 @@ const IncreDecrementProducts = (props: Props) => {
     <div className="w-[100px] flex flex-row justify-between border border-gray-100">
       <button
         onClick={() => decreaseCartQuantity(props.productId)}
-        className="text-black p-3 bg-amber-100"
+        className={`text-black p-3 bg-amber-100 ${
+          itemQuantity === 1 ? "bg-gray-100" : ""
+        }`}
+        disabled={itemQuantity === 1}
       >
         -
       </button>

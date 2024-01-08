@@ -5,6 +5,7 @@ import DeleteCart from "./DeleteCart";
 import Button from "../components/Button";
 import IncreDecrementProducts from "./IncreDecrementProducts";
 import AddWatchList from "../watchlist/AddWatchlist";
+import ProductPrice from "./Price";
 
 type Props = {
   userId: number;
@@ -72,10 +73,10 @@ const AllCartProduct = async (props: Props) => {
               <div className="flex itemms-center">
                 <AddWatchList productId={cartProduct?.id} lable />
               </div>
-
-              <p className="text-base font-black leading-none text-gray-800">
-                {cartProduct?.price}€
-              </p>
+              <ProductPrice
+                price={cartProduct?.price ?? 0}
+                productId={cartProduct?.id ?? 0}
+              />
             </div>
             <DeleteCart
               productId={cartProduct?.id ?? 0}

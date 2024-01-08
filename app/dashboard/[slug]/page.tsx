@@ -38,7 +38,7 @@ export default async function Page({ params }: { params: { slug: string } }) {
         </div>
         <hr />
         {product && (
-          <div className="grid grid-cols-2 mt-10 gap-14">
+          <div className="grid grid-cols-1 md:grid-cols-2 mt-10 gap-14">
             {urlString && <ImageGallery imageUrls={urlString} />}
             <Info
               {...product}
@@ -53,9 +53,9 @@ export default async function Page({ params }: { params: { slug: string } }) {
             <span className="font-medium text-xl">Product Description</span>
           </div>
           {product && (
-            <div className="grid grid-cols-2">
+            <div className="grid grid-cols-1 md:grid-cols-2">
               <div className="flex flex-col justify-center">
-                <div className="grid grid-cols-3 gap-5 mb-5">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-5 mb-5">
                   <div>
                     <h3 className="font-medium">Category</h3>
                     <p className="text-sm text-amber-500">{product.category}</p>
@@ -71,16 +71,6 @@ export default async function Page({ params }: { params: { slug: string } }) {
                   dangerouslySetInnerHTML={{ __html: product?.description }}
                 ></div>
               </div>
-              {/* <div className="flex justify-end relative items-center">
-              <img
-                src={product.images.split(",").pop()}
-                className="max-h-[300px] w-10/12 rounded-lg object-cover"
-                alt=""
-              />
-              <span className="text-sm absolute bottom-2 right-2 text-white font-medium">
-                {product.title}
-              </span>
-            </div> */}
             </div>
           )}
         </div>

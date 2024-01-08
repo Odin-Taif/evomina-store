@@ -12,7 +12,6 @@ import { IconType } from "react-icons";
 import { toast } from "react-toastify";
 import { useRouter } from "next/navigation";
 import useLoginModel from "@/app/hook/useLoginModal";
-import useRegisterModal from "@/app/hook/useRegisterModal";
 
 // Defining the type for the menu items
 interface MenuItem {
@@ -94,7 +93,7 @@ const UserProfile = () => {
         leaveTo="opacity-0 scale-95"
       >
         {session && session.user ? (
-          <Menu.Items className="absolute right-0 w-72 overflow-hidden mt-1 divide-y divide-gray-100 origin-top-right bg-white rounded-md shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+          <Menu.Items className="absolute right-0 w-fit overflow-hidden mt-1 divide-y divide-gray-100 origin-top-right bg-white rounded-md shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
             <div className="flex items-center space-x-2 py-4 px-4 mb-2">
               <div className="shrink-0 flex items-center justify-center rounded-full overflow-hidden relative bg-gray-200 w-9 h-9">
                 {/* Displaying user's profile picture or a default icon inside the dropdown */}
@@ -145,7 +144,7 @@ const UserProfile = () => {
             </div>
           </Menu.Items>
         ) : (
-          <Menu.Items className="absolute right-0 w-72 overflow-hidden mt-1 divide-y divide-gray-100 origin-top-right bg-white rounded-md shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+          <Menu.Items className="absolute right-0 w-40 overflow-hidden mt-1 divide-y divide-gray-100 origin-top-right bg-white rounded-md shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
             <div className="py-2">
               {/* Mapping through the menu items and rendering them */}
               {menuItemsLoggedOut.map(

@@ -8,7 +8,7 @@ import Heading from "../components/reusableComponents/Heading";
 const AboutEvomina: FunctionComponent = () => {
   // The component returns JSX to be rendered
   return (
-    <div className="max-w-[2520px] mx-auto xl:px-20 md:px-10 sm:px-4 px-3 py-10 bg-amber-50">
+    <div className="max-w-[2520px] mx-auto xl:px-20 md:px-10 sm:px-4 px-3 py-10">
       <div className="grid grid-cols-4 mx-auto">
         {/* Div for the text content with styling and responsive design */}
 

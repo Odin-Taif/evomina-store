@@ -11,6 +11,7 @@ import Size from "../components/Size";
 import Link from "next/link";
 import { useSession } from "next-auth/react";
 import AddCart from "../components/AddCart";
+import IncreDecrementProducts from "../cart/IncreDecrementProducts";
 
 interface Props {
   id: number;
@@ -56,19 +57,19 @@ const Info: React.FC<Props> = ({
           </span>
           <p className="font-bold">Secure Payment</p>
         </span>
-
-        <span className="text-sm flex items-center space-x-4">
+        {/* <IncreDecrementProducts productId={id ?? 0} /> */}
+        {/* <span className="text-sm flex items-center space-x-4">
           <span className="p-2 bg-gray-100 inline-block rounded-full">
             <LiaShippingFastSolid size={34} />
           </span>
           <p className="font-bold">Free Shipping</p>
-        </span>
-        <span className="text-sm flex items-center space-x-4">
+        </span> */}
+        {/* <span className="text-sm flex items-center space-x-4">
           <span className="p-2 bg-gray-100 inline-block rounded-full">
             <PiCubeFocusThin size={34} />
           </span>
           <p className="font-bold">Free Shipping & Return</p>
-        </span>
+        </span> */}
       </div>
       {currentUserId === userId && (
         <Link href={`/edit/${id}`}>

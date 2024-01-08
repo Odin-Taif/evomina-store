@@ -29,7 +29,8 @@
     "**/*.tsx",
     ".next/types/**/*.ts",
     "app/components/newsLetter/NewsLetterForm.js",
-    "app/components/newsLetter/NewsLetterSubscribt.js"
+    "app/components/newsLetter/NewsLetterSubscribt.js",
+    "app/components/Home/HeroSection.tsx"
   ],
   "exclude": ["node_modules"]
 }

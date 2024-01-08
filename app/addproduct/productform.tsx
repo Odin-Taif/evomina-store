@@ -59,8 +59,8 @@ const Productform = (props: Props) => {
   };
 
   useEffect(() => {
-    console.log(formData.images);
-    console.log(formData);
+    // console.log(formData.images);
+    // console.log(formData);
   }, [formData]);
 
   useEffect(() => {
