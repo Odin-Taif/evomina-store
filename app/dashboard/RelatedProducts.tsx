@@ -24,8 +24,8 @@ const RelatedProducts = ({ relatedProducts }: any) => {
     >
       {relatedProducts &&
         relatedProducts.map((product: any) => (
-          <SwiperSlide>
-            <div key={product.id}>
+          <div key={product.id}>
+            <SwiperSlide>
               <Link href={`/dashboard/${product.id}`}>
                 <div className="relative rounded-lg border border-amber-300 ">
                   <img
@@ -51,8 +51,8 @@ const RelatedProducts = ({ relatedProducts }: any) => {
                   <AddCart productId={product.id} />
                 </span>
               </div>
-            </div>
-          </SwiperSlide>
+            </SwiperSlide>
+          </div>
         ))}
     </Swiper>
   );
