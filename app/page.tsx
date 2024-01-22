@@ -8,8 +8,6 @@ import OurMission from "./components/reusableComponents/OurMission";
 export default async function Home() {
   return (
     <>
-      {/* <Header /> */}
-
       <div className="max-w-[1280px] mx-auto">
         <Banner />
         <CategoryCollections />

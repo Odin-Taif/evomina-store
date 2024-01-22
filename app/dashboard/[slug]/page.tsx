@@ -5,6 +5,7 @@ import Info from "../Info";
 import { getServerSession } from "next-auth";
 import { options } from "@/app/api/auth/[...nextauth]/options";
 import Container from "@/app/components/reusableComponents/Container";
+import RelatedProducts from "../RelatedProducts";
 
 type Props = {};
 
@@ -22,6 +23,12 @@ export default async function Page({ params }: { params: { slug: string } }) {
       productId: productId,
     },
   });
+  const relatedProducts = await prisma.product.findMany({
+    where: {
+      category: product?.category,
+    },
+  });
+  // console.log(relatedProducts);
   let averageRating = 0;
   if (allReview.length > 0) {
     const totalRating = allReview.reduce((acc, review) => {
@@ -33,12 +40,8 @@ export default async function Page({ params }: { params: { slug: string } }) {
   return (
     <Container>
       <div className="max-w-[1280px] mx-auto px-5 pt-5">
-        <div className="font-semibold text-2xl mb-2">
-          <a href="/">Evomina</a>
-        </div>
-        <hr />
         {product && (
-          <div className="grid grid-cols-1 md:grid-cols-2 mt-10 gap-14">
+          <div className="grid grid-cols-1 md:grid-cols-2 mt-5 gap-14">
             {urlString && <ImageGallery imageUrls={urlString} />}
             <Info
               {...product}
@@ -48,7 +51,7 @@ export default async function Page({ params }: { params: { slug: string } }) {
           </div>
         )}
         <div className="mb-10">
-          <div className="flex items-center space-x-5 mb-10">
+          <div className="flex items-center space-x-5 my-5">
             <span className="w-[5px] h-[30px] bg-amber-600 rounded-full inline-block"></span>
             <span className="font-medium text-xl">Product Description</span>
           </div>
@@ -60,7 +63,6 @@ export default async function Page({ params }: { params: { slug: string } }) {
                     <h3 className="font-medium">Category</h3>
                     <p className="text-sm text-amber-500">{product.category}</p>
                   </div>
-
                   <div>
                     <h3 className="font-medium">Store</h3>
                     <p className="text-sm text-amber-500">{product.store}</p>
@@ -75,6 +77,12 @@ export default async function Page({ params }: { params: { slug: string } }) {
           )}
         </div>
       </div>
+      <div className="flex items-center space-x-5 my-5">
+        <span className="w-[5px] h-[30px] bg-amber-600 rounded-full inline-block"></span>
+        <span className="font-medium text-xl">Related Products</span>
+      </div>
+
+      <RelatedProducts relatedProducts={relatedProducts} />
     </Container>
   );
 }
