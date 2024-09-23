@@ -1,14 +1,17 @@
 import "./globals.css";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import Provider from "./components/Provider";
+
 import Navbar from "./components/Navbar/Navbar";
-import Footer from "./components/Footer/Footer";
+
 import LoginModal from "./components/modals/LoginModal";
 import RegisterModal from "./components/modals/RegisterModal";
 import ToastContainerBar from "./components/ToastContainerBar";
 import { CounterContextProvider } from "./context/counter.context";
 import { ShoppingCartProvider } from "./context/shopincartConext";
+import Provider from "./components/Provider";
+import Footer from "./components/Footer/Footer";
+import { WixClientContextProvider } from "./context/wixcontext";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
@@ -30,16 +33,20 @@ export default function RootLayout({
       </head>
       <body className={inter.className}>
         <Provider>
+          {/* 
           <CounterContextProvider>
-            <ShoppingCartProvider>
-              <ToastContainerBar />
-              <LoginModal />
-              <RegisterModal />
-              <Navbar />
-              {children}
-              <Footer />
-            </ShoppingCartProvider>
+            <ShoppingCartProvider> */}
+          <WixClientContextProvider>
+            <ToastContainerBar />
+            <LoginModal />
+            <RegisterModal />
+            <Navbar />
+            {children}
+            {/* <Footer /> */}
+            {/* </ShoppingCartProvider>
           </CounterContextProvider>
+   */}
+          </WixClientContextProvider>
         </Provider>
       </body>
     </html>

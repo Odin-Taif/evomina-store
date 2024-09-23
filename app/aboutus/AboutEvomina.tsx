@@ -5,7 +5,7 @@ import { FunctionComponent } from "react";
 import Heading from "../components/reusableComponents/Heading";
 
 // Defining the OurMission component as a functional component
-const AboutEvomina: FunctionComponent = () => {
+const AboutLevantisk: FunctionComponent = () => {
   // The component returns JSX to be rendered
   return (
     <div className="max-w-[2520px] mx-auto xl:px-20 md:px-10 sm:px-4 px-3 py-10">
@@ -54,4 +54,4 @@ const AboutEvomina: FunctionComponent = () => {
 };
 
 // Exporting the component for use in other parts of the application
-export default AboutEvomina;
+export default AboutLevantisk;

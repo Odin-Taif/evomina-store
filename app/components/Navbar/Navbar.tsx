@@ -1,19 +1,22 @@
 "use client";
-import React, { useContext, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import Link from "next/link";
-import { CiShoppingCart } from "react-icons/ci";
-import { FaRegHeart } from "react-icons/fa";
-import { BsChevronCompactUp } from "react-icons/bs";
-import SearchBar from "../SearchBar";
 import { useSession } from "next-auth/react";
-import Logo from "./Logo";
-import UserProfile from "./UserProfile";
+import { Logo } from "./Logo";
 import useLoginModel from "@/app/hook/useLoginModal";
 import axios from "axios";
 import { useShoppingCart } from "@/app/context/shopincartConext";
+import { UserSection } from "./user/UserSection";
+import { BsChevronCompactUp } from "react-icons/bs";
 type Props = {};
 
 const Navbar = (props: Props) => {
+  const links = [
+    { name: "Home", url: "/" },
+    { name: "Shop", url: "/" },
+    { name: "About", url: "/aboutus" },
+    { name: "Contact", url: "/contact" },
+  ];
   const [showNav, setShowNav] = useState<boolean>(false);
   const { openCart, cartQuantity, watchlistQuantity, cartItems } =
     useShoppingCart();
@@ -41,148 +44,54 @@ const Navbar = (props: Props) => {
 
   return (
     <div className="border-b border-amber-400 mb-2">
-      <div className="flex items-center justify-between py-2 px-4 relative">
+      <div className="flex items-center justify-end md:justify-between gap-x-2 py-2 px-4 relative">
         <div className="flex items-center md:space-x-10 lg:space-x-20">
           <Logo />
+          {/* screen device nav */}
           <nav className="max-md:hidden">
-            <ul className="flex items-center lg:space-x-10 space-x-7 opacity-70 text-[15px]">
-              <li>
-                <a
-                  href="/"
-                  className="py-3 inline-block w-full hover:text-yellow-600"
-                >
-                  Home
-                </a>
-              </li>
-              <li>
-                <a
-                  href="/filters/All Products"
-                  className="py-3 inline-block w-full hover:text-yellow-600"
-                >
-                  Shop
-                </a>
-              </li>
-              <li>
-                <a
-                  href="/aboutus"
-                  className="py-3 inline-block w-full hover:text-yellow-600"
-                >
-                  About
-                </a>
-              </li>
-              <li>
-                <a
-                  href="/contact"
-                  className="py-3 inline-block w-full hover:text-yellow-600"
-                >
-                  Contact
-                </a>
-              </li>
-            </ul>
+            <div className="flex items-center lg:space-x-10 space-x-7 opacity-70 text-[15px]">
+              {links.map((link, index) => (
+                <Link href={link.url} key={index}>
+                  <p className="py-3 inline-block w-full hover:text-yellow-600">
+                    {link.name}
+                  </p>
+                </Link>
+              ))}
+            </div>
           </nav>
         </div>
-        <div className="flex items-center space-x-4">
-          <SearchBar />
-          {session?.user ? (
-            <Link href="/watchlist">
-              <div className="relative">
-                <div className="p-2 bg-gray-100 rounded-full text-red-400">
-                  <FaRegHeart size={15} />
-                </div>
-                <span className="absolute top-0 right-0 -mt-1 -mr-1 text-black rounded-full p-1 text-xs">
-                  {watchlistQuantity}
-                </span>
-              </div>
-            </Link>
-          ) : (
-            <div onClick={loginModel.onOpen}>
-              <div className="relative">
-                <div className="p-2 bg-gray-100 rounded-full text-red-400">
-                  <FaRegHeart size={15} />
-                </div>
-                <span className="absolute top-0 right-0 -mt-1 -mr-1 text-black rounded-full p-1 text-xs">
-                  0
-                </span>
-              </div>
-            </div>
-          )}
 
-          {session?.user ? (
-            <Link href="/cart">
-              <div className="relative">
-                <div className="p-2 bg-gray-100 rounded-full text-green-500">
-                  <CiShoppingCart size={20} />
-                </div>
-                <span className="absolute top-0 right-0 -mt-1 -mr-1 text-black rounded-full p-1 text-xs">
-                  {cartQuantity}
-                </span>
-              </div>
-            </Link>
-          ) : (
-            <div onClick={loginModel.onOpen}>
-              <div className="relative">
-                <div className="p-2 bg-gray-100 rounded-full text-green-500">
-                  <CiShoppingCart size={20} />
-                </div>
-                <span className="absolute top-0 right-0 -mt-1 -mr-1 text-black rounded-full p-1 text-xs">
-                  0
-                </span>
-              </div>
-            </div>
-          )}
-          <UserProfile />
-          <span
-            onClick={() => setShowNav(!showNav)}
-            className="p-[9px] bg-gray-100 rounded-full md:hidden"
-          >
-            <BsChevronCompactUp
-              className={`transition ease-in duration-150 ${
-                showNav ? "rotate-180" : "0"
-              }`}
-            />
-          </span>
-        </div>
+        {/* user section */}
+        <UserSection />
+        {/* user section */}
+        <span
+          onClick={() => setShowNav(!showNav)}
+          className="p-[9px] bg-gray-100 rounded-full md:hidden"
+        >
+          <BsChevronCompactUp
+            className={`transition ease-in duration-150 ${
+              showNav ? "rotate-180" : "0"
+            }`}
+          />
+        </span>
       </div>
+
+      {/* mobile nav */}
       <div
-        className={`md:hidden ${
+        className={`md:hidden bg-gray-100 ${
           showNav ? "pb-4 px-5" : "h-0 invisible opacity-0"
         }`}
       >
-        <ul className="flex flex-col text-[15px] opacity-75 px-2">
-          <li>
-            <a
-              href="/"
-              className="py-3 inline-block w-full font-bold hover:text-yellow-600"
-            >
-              Home
-            </a>
-          </li>
-          <li>
-            <a
-              href="/filters/All Products"
-              className="py-3 inline-block w-full font-bold hover:text-yellow-600"
-            >
-              Shop
-            </a>
-          </li>
-          <li>
-            <a
-              href="/contact"
-              className="py-3 inline-block w-full font-bold hover:text-yellow-600"
-            >
-              Contact
-            </a>
-          </li>
-
-          <li>
-            <a
-              href="/aboutus"
-              className="py-3 inline-block w-full font-bold hover:text-yellow-600"
-            >
-              About
-            </a>
-          </li>
-        </ul>
+        <div className="flex flex-col text-[15px] opacity-75 px-2 justify-center items-center">
+          {links &&
+            links.map((link, index) => (
+              <Link href={link.url} key={index}>
+                <p className="py-3 inline-block w-full font-bold hover:text-yellow-600">
+                  {link.name}
+                </p>
+              </Link>
+            ))}
+        </div>
       </div>
     </div>
   );

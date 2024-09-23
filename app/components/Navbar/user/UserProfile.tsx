@@ -22,7 +22,7 @@ interface MenuItem {
 }
 
 // UserProfile component definition
-const UserProfile = () => {
+export const UserProfile = () => {
   // Hook to access the Next.js router
   const router = useRouter();
   // Hook to get the session data and status
@@ -180,5 +180,3 @@ const UserProfile = () => {
     </Menu>
   );
 };
-
-export default UserProfile;

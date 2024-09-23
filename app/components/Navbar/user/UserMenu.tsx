@@ -3,16 +3,15 @@
 // Importing necessary hooks and components
 
 import { useCallback, useState } from "react";
-import Button from "../reusableComponents/Button";
 import { BiLogIn, BiUserPlus } from "react-icons/bi";
 import { useSession } from "next-auth/react";
-import UserProfile from "./UserProfile";
 import useRegisterModal from "@/app/hook/useRegisterModal";
 import useLoginModel from "@/app/hook/useLoginModal";
+import Button from "../../reusableComponents/Button";
+import { UserProfile } from "./UserProfile";
 
 // Defining the type for props, even though it's empty in this case
 type Props = {};
-
 // Main functional component for UserMenu
 function UserMenu({}: Props) {
   // Hook to access session data and user's authentication status
