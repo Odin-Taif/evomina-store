@@ -1,5 +1,5 @@
 // Importing the necessary React components and custom components
-import AboutEvomina from "./AboutEvomina";
+import AboutEvomina from "./AboutLevantisk";
 import OurHistory from "./OurHistory";
 import OurValues from "./OurValues";
 
